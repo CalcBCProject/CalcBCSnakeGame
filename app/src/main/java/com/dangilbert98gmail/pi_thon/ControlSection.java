@@ -26,6 +26,7 @@ public class ControlSection extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private PlayScreen playActivity = PlayScreen.getInstance();
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,6 +43,7 @@ public class ControlSection extends Fragment {
      * @return A new instance of fragment ControlSection.
      */
     // TODO: Rename and change types and number of parameters
+
     public static ControlSection newInstance(String param1, String param2) {
         ControlSection fragment = new ControlSection();
         Bundle args = new Bundle();
