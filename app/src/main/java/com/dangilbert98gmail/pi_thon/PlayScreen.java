@@ -2,8 +2,9 @@ package com.dangilbert98gmail.pi_thon;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-public class PlayScreen extends AppCompatActivity
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener
 {
 	private static PlayScreen instance = null;
     private static ControlSection controlFrag;

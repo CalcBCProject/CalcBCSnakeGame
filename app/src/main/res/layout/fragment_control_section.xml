@@ -14,9 +14,14 @@
         android:layout_gravity="center"
         android:id="@+id/ButtonGroup">
 
+
         <Button
             android:id="@+id/LeftButton"
 
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:width="38dp"
+            android:height="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/AnchorButton"
@@ -26,6 +31,10 @@
         <Button
             android:id="@+id/RightButton"
 
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:width="38dp"
+            android:height="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/AnchorButton"
@@ -35,6 +44,10 @@
         <Button
             android:id="@+id/DownButton"
 
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:width="80dp"
+            android:height="38dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/AnchorButton"
@@ -44,6 +57,10 @@
         <Button
             android:id="@+id/UpButton"
 
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:width="80dp"
+            android:height="38dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -53,6 +70,8 @@
         <Button
             android:id="@+id/AnchorButton"
 
+            android:minHeight="50dp"
+            android:minWidth="80dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

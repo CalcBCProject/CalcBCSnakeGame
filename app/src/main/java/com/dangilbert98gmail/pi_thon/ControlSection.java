@@ -1,5 +1,6 @@
 package com.dangilbert98gmail.pi_thon;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,8 +10,9 @@ import android.widget.Button;
 
 
 public class ControlSection extends Fragment {
-    private PlayScreen playActivity = PlayScreen.getInstance();
     private Button leftButton, rightButton, upButton, downButton;
+
+    ControlSectionListener playActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +42,22 @@ public class ControlSection extends Fragment {
 
         @Override
         public void onClick(View v) {
+            if(playActivity != null)
             playActivity.setSnakeDirection(direction);
         }
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        try{
+            playActivity = (ControlSectionListener)context;
+        } catch (Exception e){
+            throw new ClassCastException(playActivity.toString());
+        }
+    }
+
+    public interface ControlSectionListener{
+        public void setSnakeDirection(SnakeDirection direction);
     }
 }
