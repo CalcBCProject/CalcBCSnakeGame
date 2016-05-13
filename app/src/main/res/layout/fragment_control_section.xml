@@ -7,10 +7,27 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_gravity="center" />
+        android:id="@+id/LeftButton"
+        android:layout_gravity="left|center_vertical" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RightButton"
+        android:layout_gravity="right|center_vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/DownButton"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/UpButton"
+        android:layout_gravity="center_horizontal|top" />
 </FrameLayout>
