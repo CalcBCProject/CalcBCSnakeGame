@@ -20,7 +20,7 @@
 
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:width="38dp"
+            android:width="46dp"
             android:height="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
 
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:width="38dp"
+            android:width="46dp"
             android:height="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:width="80dp"
-            android:height="38dp"
+            android:height="46dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/AnchorButton"
@@ -60,7 +60,7 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:width="80dp"
-            android:height="38dp"
+            android:height="46dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -77,5 +77,18 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/PauseButton"
+
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:singleLine="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
 </FrameLayout>
