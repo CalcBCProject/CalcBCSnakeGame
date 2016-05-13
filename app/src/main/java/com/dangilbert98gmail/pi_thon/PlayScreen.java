@@ -1,11 +1,7 @@
 package com.dangilbert98gmail.pi_thon;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.Enumeration;
+import android.support.v7.app.AppCompatActivity;
 
 public class PlayScreen extends AppCompatActivity
 {

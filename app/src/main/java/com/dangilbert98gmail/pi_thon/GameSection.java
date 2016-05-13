@@ -1,20 +1,24 @@
 package com.dangilbert98gmail.pi_thon;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Timer;
+
 
 public class GameSection extends Fragment
 {
 	private SnakeDirection direction;
+	private Timer timer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         direction = SnakeDirection.UP;
+	    timer = new Timer();
 
         return inflater.inflate(R.layout.fragment_game_section, container, false);
     }
