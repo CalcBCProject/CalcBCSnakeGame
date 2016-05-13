@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dangilbert98gmail.pi_thon.ControlSection"
+    android:background="#ffffff">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/ButtonGroup">
+
+        <Button
+            android:id="@+id/LeftButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/AnchorButton"
+            android:layout_centerInParent="true"
+            android:layout_gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/RightButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/AnchorButton"
+            android:layout_centerInParent="true"
+            android:layout_gravity="right|center_vertical" />
+
+        <Button
+            android:id="@+id/DownButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AnchorButton"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <Button
+            android:id="@+id/UpButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/AnchorButton"
+            android:layout_gravity="center_horizontal|top" />
+
+        <Button
+            android:id="@+id/AnchorButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+</FrameLayout>
