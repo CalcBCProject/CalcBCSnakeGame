@@ -1,21 +1,13 @@
 package com.dangilbert98gmail.pi_thon;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.media.Image;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-
-import java.util.Timer;
 
 
 public class GameSection extends Fragment
@@ -26,10 +18,10 @@ public class GameSection extends Fragment
 	private GridView grid;
 	private final int GRID_WIDTH = 8;
 	private final int GRID_HEIGHT = 10;
-	private final int tail = R.drawable.redTile;
-	private final int head = R.drawable.redTile;
-	private final int empty = R.drawable.redTile;
-	private final int consumable = R.drawable.redTile;
+	private final int tail = R.drawable.red_tile;
+	private final int head = R.drawable.red_tile;
+	private final int empty = R.drawable.red_tile;
+	private final int consumable = R.drawable.red_tile;
 	private int currLoc;
 	private int [] images;
 
