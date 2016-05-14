@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class ControlSection extends Fragment {
     private Button leftButton, rightButton, upButton, downButton;
+    private ImageButton pauseButton;
 
     ControlSectionListener playActivity;
 
@@ -25,18 +27,21 @@ public class ControlSection extends Fragment {
         upButton = (Button)(v.findViewById(R.id.UpButton));
         downButton = (Button)(v.findViewById(R.id.DownButton));
 
-        leftButton.setOnClickListener( new buttonListener(SnakeDirection.LEFT));
-        rightButton.setOnClickListener( new buttonListener(SnakeDirection.RIGHT));
-        upButton.setOnClickListener( new buttonListener(SnakeDirection.UP));
-        downButton.setOnClickListener( new buttonListener(SnakeDirection.DOWN));
+        leftButton.setOnClickListener( new ButtonListener(SnakeDirection.LEFT));
+        rightButton.setOnClickListener( new ButtonListener(SnakeDirection.RIGHT));
+        upButton.setOnClickListener( new ButtonListener(SnakeDirection.UP));
+        downButton.setOnClickListener( new ButtonListener(SnakeDirection.DOWN));
 
+        pauseButton = (ImageButton)(v.findViewById(R.id.PauseButton));
+
+        pauseButton.setOnClickListener( new ImageButtonListerner() );
         return v;
     }
 
-    public class buttonListener implements View.OnClickListener{
+    public class ButtonListener implements View.OnClickListener{
         private SnakeDirection direction;
 
-        public buttonListener(SnakeDirection d){
+        public ButtonListener(SnakeDirection d){
             direction = d;
         }
 
@@ -44,6 +49,12 @@ public class ControlSection extends Fragment {
         public void onClick(View v) {
             if(playActivity != null)
             playActivity.setSnakeDirection(direction);
+        }
+    }
+
+    public class ImageButtonListerner implements View.OnClickListener{
+        public void onClick(View v){
+
         }
     }
 
