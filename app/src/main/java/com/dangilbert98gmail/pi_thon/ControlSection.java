@@ -32,9 +32,9 @@ public class ControlSection extends Fragment {
         upButton.setOnClickListener( new ButtonListener(SnakeDirection.UP));
         downButton.setOnClickListener( new ButtonListener(SnakeDirection.DOWN));
 
-        pauseButton = (ImageButton) (v.findViewById(R.id.PauseButton));
+        pauseButton = (ImageButton)(v.findViewById(R.id.PauseButton));
 
-
+        pauseButton.setOnClickListener( new ImageButtonListerner() );
         return v;
     }
 
@@ -59,6 +59,12 @@ public class ControlSection extends Fragment {
             if(playActivity != null) {
                 playActivity.pauseGame();
             }
+        }
+    }
+
+    public class ImageButtonListerner implements View.OnClickListener{
+        public void onClick(View v){
+
         }
     }
 
