@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dangilbert98gmail.pi_thon.ControlSection"
-    android:background="#ffffff">
+    android:background="#e17171"
+    android:id="@+id/ControlGroup">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,8 +12,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:id="@+id/ButtonGroup">
+        android:layout_gravity="left|center_vertical"
+
+        android:id="@+id/MovementGroup">
 
 
         <Button
@@ -78,17 +80,25 @@
             android:layout_centerVertical="true"
             android:visibility="invisible"/>
 
-        <Button
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:clickable="false"
+        android:id="@+id/PauseGroup">
+
+        <ImageButton
             android:id="@+id/PauseButton"
 
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:singleLine="false"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/pause_button_2"
+            android:background="#00ffffff"
+            android:layout_gravity="right|top" />
     </RelativeLayout>
 </FrameLayout>

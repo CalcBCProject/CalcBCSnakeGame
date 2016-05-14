@@ -28,4 +28,5 @@
         android:layout_weight="0.30"
         android:id="@+id/ControlSection"
         android:name="com.dangilbert98gmail.pi_thon.ControlSection" />
+
 </LinearLayout>
