@@ -1,17 +1,19 @@
 package com.dangilbert98gmail.pi_thon;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.view.WindowManager;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener
 {
-	private static PlayScreen instance = null;
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
-    private static LinearLayout screenLayout;
+    private static PauseSection pauseFrag;
+    private WindowManager wm;
+    protected static boolean isPaused = false;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -25,18 +27,22 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     private void setVariables(){
         controlFrag = (ControlSection)(getSupportFragmentManager().findFragmentById(R.id.ControlSection));
         gameFrag = (GameSection) (getSupportFragmentManager().findFragmentById(R.id.GameSection));
-        instance = this;
+        wm = (WindowManager) (getSystemService(Context.WINDOW_SERVICE));
     }
-
-	static PlayScreen getInstance(){
-		return instance;
-	}
 
     public void setSnakeDirection(SnakeDirection d){
         gameFrag.setDirection(d);
     }
 
     public void pauseGame(){
+        controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
+        controlFrag.disableButtons();
+        isPaused = true;
+        Intent intent = new Intent(this, PauseSection.class);
+        startActivity(intent);
+    }
 
+    public void resumeGame(){
+        controlFrag.enableButtons();
     }
 }

@@ -6,7 +6,7 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                tools:context=".GameScreen"
+                tools:context=".PlayScreen"
                 android:orientation="vertical"
                 android:background="#944a4a"
     android:id="@+id/PlayScreen">

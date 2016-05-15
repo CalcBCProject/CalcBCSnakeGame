@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PauseSection"
+    android:id="@+id/PauseSection">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ResumeButton"
+        android:layout_gravity="right|top"
+        android:src="@mipmap/x_button_1"
+        android:background="#00ffffff"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/Options">
+
+        <Button
+            android:background="@drawable/pausebuttons"
+            android:layout_marginBottom="10dp"
+            android:width="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            android:textStyle="bold"
+            android:id="@+id/Button1" />
+
+        <Button
+            android:background="@drawable/pausebuttons"
+            android:layout_marginBottom="10dp"
+            android:width="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option Two"
+            android:textStyle="bold"
+            android:id="@+id/Button2" />
+
+        <Button
+            android:background="@drawable/pausebuttons"
+            android:layout_marginBottom="10dp"
+            android:width="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option Three"
+            android:textStyle="bold"
+            android:id="@+id/Button3" />
+
+        <CheckBox
+            android:background="@drawable/pausebuttons"
+            android:width="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disable Calculus Questions"
+            android:textStyle="bold"
+            android:id="@+id/CheckBox"
+            android:checked="false"
+            android:clickable="true" />
+    </LinearLayout>
+</FrameLayout>

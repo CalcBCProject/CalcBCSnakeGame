@@ -51,10 +51,13 @@ public class GameSection extends Fragment
 			    //move
 			    switch( direction )
 			    {
+					//Check for out of bounds. Error occurs during runtime.
+					/*
 				    case UP: setImages( getCurrLoc() - 1, head );;
 				    case DOWN: setImages( getCurrLoc() + 1, head );
 				    case RIGHT: setImages( getCurrLoc() + GRID_HEIGHT, head );
 				    case LEFT: setImages( getCurrLoc() - GRID_HEIGHT, head );
+				    */
 			    }
 			    grid.setAdapter( new TileAdapter( getGameContext(), images ) );
 			    handler.postDelayed(this, 100);
