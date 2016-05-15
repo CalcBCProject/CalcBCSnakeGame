@@ -146,6 +146,14 @@ public class GameSection extends Fragment
 	{
 		images[ pos ] = val;
 	}
+	public void pause()
+	{
+		handler.removeCallbacks( runnable );
+	}
+	public void resume()
+	{
+		handler.postDelayed( runnable, delay );
+	}
 	public int getCurrLoc()
 	{
 		return currLoc;
