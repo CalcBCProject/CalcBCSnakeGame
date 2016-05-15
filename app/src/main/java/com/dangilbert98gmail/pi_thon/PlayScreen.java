@@ -3,8 +3,13 @@ package com.dangilbert98gmail.pi_thon;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
+
+import java.util.List;
 
 public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener
 {
@@ -38,8 +43,21 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
         isPaused = true;
-        Intent intent = new Intent(this, PauseSection.class);
-        startActivity(intent);
+
+        FragmentManager fm = getSupportFragmentManager();
+        pauseFrag = new PauseSection();
+        pauseFrag.show(fm, "fragment_pause_screen");
+    }
+
+    public void notifyPause(){
+        List<Fragment> frags = getSupportFragmentManager().getFragments();
+        for(Fragment f : frags){
+            Log.d("A1", "Looking...");
+            if(f != null && f instanceof PauseSection){
+                Log.d("A2", "Found!");
+                ((PauseSection) f).onBackPressed();
+            }
+        }
     }
 
     public void resumeGame(){

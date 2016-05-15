@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -23,9 +22,8 @@ public class ControlSection extends Fragment {
     private Button leftButton, rightButton, upButton, downButton, anchorButton;
     private ArrayList<Button> myButtons;
     private ImageButton pauseButton;
-    private PopupWindow popupWindow;
     private LayoutInflater layoutInflater;
-    private View popupView, parent, myView;
+    private View parent, myView;
     private DisplayMetrics dm;
 
     private ControlSectionListener playActivity;
@@ -37,7 +35,6 @@ public class ControlSection extends Fragment {
         myView = inflater.inflate(R.layout.fragment_control_section, container, false);
 
         layoutInflater = (LayoutInflater)(getActivity().getBaseContext().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE));
-        popupView = layoutInflater.inflate(R.layout.activity_pause_screen, null);
 
         dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -68,9 +65,7 @@ public class ControlSection extends Fragment {
         @Override
         public void onClick(View v) {
             if(playActivity != null) {
-                popupWindow = new PopupWindow(popupView, (int)(dm.widthPixels * PAUSE_WIDTH_RATIO), (int)(dm.heightPixels * PAUSE_HEIGHT_RATIO));
                 playActivity.pauseGame();
-                popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
                 /* Attempts at blurring background */
                 WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
@@ -109,11 +104,6 @@ public class ControlSection extends Fragment {
         upButton.setEnabled(true);
         downButton.setEnabled(true);
         pauseButton.setEnabled(true);
-
-        //Also closes Pause Menu, if it's active
-        if(popupWindow != null){
-            popupWindow.dismiss();
-        }
     }
 
     private void setupButtons(){

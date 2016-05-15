@@ -1,11 +1,10 @@
 package com.dangilbert98gmail.pi_thon;
 
+
+
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +15,31 @@ import android.widget.ImageButton;
 /**
  * Created by user on 5/14/2016.
  */
-public class PauseSection extends AppCompatActivity {
+public class PauseSection extends DialogFragment{
     private ImageButton resumeButton;
     private CheckBox toggleQuestions;
     private PauseSectionListener playActivity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_pause_screen );
+    private View myView;
 
-        setButtons();
-        setButtonListeners();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        myView = inflater.inflate(R.layout.dialog_fragment_pause, container, false);
+        getDialog().setCanceledOnTouchOutside(false);
+
+        return myView;
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        try{
+            playActivity = (PauseSectionListener)context;
+        } catch (Exception e){
+            throw new ClassCastException(playActivity.toString());
+        }
     }
 
     public class ImageButtonListeners implements View.OnClickListener{
@@ -46,8 +57,8 @@ public class PauseSection extends AppCompatActivity {
     }
 
     private void setButtons(){
-        resumeButton = (ImageButton) (findViewById(R.id.ResumeButton));
-        toggleQuestions = (CheckBox) (findViewById(R.id.CheckBox));
+        resumeButton = (ImageButton) (myView.findViewById(R.id.ResumeButton));
+        toggleQuestions = (CheckBox) (myView.findViewById(R.id.CheckBox));
     }
 
     private void setButtonListeners(){
@@ -60,8 +71,6 @@ public class PauseSection extends AppCompatActivity {
     }
 
     public void resumeGame(){
-        Intent intent = new Intent(this, PlayScreen.class);
-        startActivity(intent);
-        finish();
+        playActivity.resumeGame();
     }
 }
