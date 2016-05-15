@@ -12,12 +12,16 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
 
 
 public class ControlSection extends Fragment {
-    private final double WIDTH_SCREEN_RATIO = .8, HEIGHT_SCREEN_RATIO = .6;
+    private final double PAUSE_WIDTH_RATIO = .8, PAUSE_HEIGHT_RATIO = .6, BUTTON_WIDTH_RATIO = .15, BUTTON_HEIGHT_RATIO = .15;
 
-    private Button leftButton, rightButton, upButton, downButton;
+    private Button leftButton, rightButton, upButton, downButton, anchorButton;
+    private ArrayList<Button> myButtons;
     private ImageButton pauseButton;
     private PopupWindow popupWindow;
     private LayoutInflater layoutInflater;
@@ -38,8 +42,9 @@ public class ControlSection extends Fragment {
         dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        setButtons();
-        setButtonListeners();
+        myButtons = new ArrayList<Button>();
+        setupButtons();
+        setupButtonListeners();
 
         return myView;
     }
@@ -63,7 +68,7 @@ public class ControlSection extends Fragment {
         @Override
         public void onClick(View v) {
             if(playActivity != null) {
-                popupWindow = new PopupWindow(popupView, (int)(dm.widthPixels * WIDTH_SCREEN_RATIO), (int)(dm.heightPixels * HEIGHT_SCREEN_RATIO));
+                popupWindow = new PopupWindow(popupView, (int)(dm.widthPixels * PAUSE_WIDTH_RATIO), (int)(dm.heightPixels * PAUSE_HEIGHT_RATIO));
                 playActivity.pauseGame();
                 popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
@@ -111,16 +116,48 @@ public class ControlSection extends Fragment {
         }
     }
 
-    private void setButtons(){
+    private void setupButtons(){
+
         leftButton = (Button)(myView.findViewById(R.id.LeftButton));
         rightButton = (Button)(myView.findViewById(R.id.RightButton));
         upButton = (Button)(myView.findViewById(R.id.UpButton));
         downButton = (Button)(myView.findViewById(R.id.DownButton));
+        anchorButton = (Button)(myView.findViewById(R.id.AnchorButton));
         pauseButton = (ImageButton)(myView.findViewById(R.id.PauseButton));
 
+        myButtons.add(leftButton);
+        myButtons.add(rightButton);
+        myButtons.add(upButton);
+        myButtons.add(downButton);
+        myButtons.add(anchorButton);
+
+        for(Button b : myButtons){
+            if (b.getId() == R.id.LeftButton || b.getId() == R.id.RightButton){
+                RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams)b.getLayoutParams();
+                p.width = (int)(dm.widthPixels * BUTTON_WIDTH_RATIO);
+                p.height = (int)(dm.heightPixels * BUTTON_HEIGHT_RATIO);
+                b.setLayoutParams(p);
+            }
+            if (b.getId() == R.id.DownButton || b.getId() == R.id.UpButton ){
+                RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams)b.getLayoutParams();
+                p.width = (int)(dm.heightPixels * BUTTON_HEIGHT_RATIO);
+                p.height = (int)(dm.widthPixels * BUTTON_WIDTH_RATIO);
+                b.setLayoutParams(p);
+            }
+            if (b.getId() == R.id.AnchorButton){
+                RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams)b.getLayoutParams();
+                p.width = (int)(dm.heightPixels * BUTTON_HEIGHT_RATIO) + 20;
+                p.height = (int)(dm.widthPixels * BUTTON_WIDTH_RATIO);
+                b.setLayoutParams(p);
+            }
+            b.setMaxHeight(400);
+            b.setMaxWidth(400);
+            b.setMinHeight(0);
+            b.setMinWidth(0);
+        }
     }
 
-    private void setButtonListeners(){
+    private void setupButtonListeners(){
         leftButton.setOnClickListener( new ButtonListener(SnakeDirection.LEFT));
         rightButton.setOnClickListener( new ButtonListener(SnakeDirection.RIGHT));
         upButton.setOnClickListener( new ButtonListener(SnakeDirection.UP));
