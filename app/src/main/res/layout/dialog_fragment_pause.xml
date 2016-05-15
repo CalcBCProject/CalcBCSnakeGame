@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Main Menu"
             android:textStyle="bold"
-            android:id="@+id/Button1" />
+            android:id="@+id/MainMenu" />
 
         <Button
             android:background="@drawable/pausebuttons"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="Restart Game"
             android:textStyle="bold"
-            android:id="@+id/Button2" />
+            android:id="@+id/RestartGame" />
 
         <Button
             android:background="@drawable/pausebuttons"
