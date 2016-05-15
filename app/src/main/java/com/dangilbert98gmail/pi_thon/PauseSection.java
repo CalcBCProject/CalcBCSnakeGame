@@ -132,6 +132,7 @@ public class PauseSection extends DialogFragment{
                     case DialogInterface.BUTTON_POSITIVE:
                         if(buttonID == R.id.RestartGame){
                             playActivity.restartGame();
+                            resumeButton.performClick();
                         } else if (buttonID == R.id.MainMenu){
                             playActivity.goToMainMenu();
                         }
