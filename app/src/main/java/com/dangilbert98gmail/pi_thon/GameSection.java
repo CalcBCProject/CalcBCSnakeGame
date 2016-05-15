@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,12 @@ public class GameSection extends Fragment
 	private final int GRID_WIDTH = 8;
 	private final int GRID_HEIGHT = 10;
 	private final int tail = R.drawable.red_tile;
-	private final int head = R.drawable.red_tile;
-	private final int empty = R.drawable.red_tile;
+	private final int head = R.drawable.head;
+	private final int empty = R.drawable.background;
 	private final int consumable = R.drawable.red_tile;
 	private int currLoc;
 	private int [] images;
+	private final int delay = 1000;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,14 +35,15 @@ public class GameSection extends Fragment
 	    direction = SnakeDirection.UP;
 
 	    images = new int [GRID_WIDTH * GRID_HEIGHT];
-	    for( int x = 0; x < GRID_WIDTH; x++ )
+	    for( int r = 0; r < GRID_HEIGHT; r++ )
 	    {
-		    for( int y = 0; y < GRID_HEIGHT; y++ )
+		    for( int c = 0; c < GRID_WIDTH; c++ )
 		    {
-			    images[ (x*GRID_HEIGHT) + y ] = empty;
+			    images[ (r*GRID_WIDTH) + c ] = empty;
 		    }
 	    }
-	    images[ ( (GRID_WIDTH/2) * GRID_HEIGHT) + (GRID_HEIGHT/2) ] = head;
+	    currLoc = ((GRID_HEIGHT/2) * GRID_WIDTH) + (GRID_WIDTH/2);
+	    images[ currLoc ] = head;
 	    grid = (GridView) v.findViewById(R.id.gameGrid);
 	    grid.setAdapter( new TileAdapter( this.getContext(), images ) );
 
@@ -48,23 +51,12 @@ public class GameSection extends Fragment
 		    @Override
 		    public void run()
 		    {
-			    //move
-			    switch( direction )
-			    {
-					//Check for out of bounds. Error occurs during runtime.
-					/*
-				    case UP: setImages( getCurrLoc() - 1, head );;
-				    case DOWN: setImages( getCurrLoc() + 1, head );
-				    case RIGHT: setImages( getCurrLoc() + GRID_HEIGHT, head );
-				    case LEFT: setImages( getCurrLoc() - GRID_HEIGHT, head );
-				    */
-			    }
-			    grid.setAdapter( new TileAdapter( getGameContext(), images ) );
-			    handler.postDelayed(this, 100);
+			    move( direction );
+			    handler.postDelayed(this, delay);
 		    }
 	    };
 
-	    handler.postDelayed(runnable, 100);
+	    handler.postDelayed(runnable, delay);
 
 
 
@@ -122,6 +114,29 @@ public class GameSection extends Fragment
 			}
 		}
 		return false;
+	}
+	public void move( SnakeDirection d )
+	{
+		Log.d("direction", d.toString() + "    " + getCurrLoc() );
+		setImages( getCurrLoc(), empty );
+		switch( d )
+		{
+			    case UP:    if( (getCurrLoc() - GRID_WIDTH) < 0 )  die( d );
+				            else currLoc = getCurrLoc() - GRID_WIDTH; break;
+			    case DOWN:  if( (getCurrLoc() + GRID_WIDTH) >= (GRID_HEIGHT * GRID_WIDTH) )  die(d);
+			                else currLoc = getCurrLoc() + GRID_WIDTH; break;
+			    case RIGHT: if( (getCurrLoc() + 1) % GRID_WIDTH == 0 )  die(d);
+			                else currLoc = getCurrLoc() + 1; break;
+			    case LEFT:  if( getCurrLoc() % GRID_WIDTH == 0 )  die(d);
+			                else currLoc = getCurrLoc() - 1; break;
+		}
+		setImages( currLoc, head );
+		grid.setAdapter( new TileAdapter( getGameContext(), images ) );
+	}
+	public void die(SnakeDirection d)
+	{
+		Log.d("direction", "died--------------"+d.toString() + "    " + getCurrLoc() );
+		//may death consume us all #trump2016
 	}
 	public int [] getImages()
 	{
