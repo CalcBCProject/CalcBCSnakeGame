@@ -10,7 +10,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
@@ -22,8 +21,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by user on 5/14/2016.
@@ -127,22 +124,26 @@ public class PauseSection extends DialogFragment{
             alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             alert.show();
         }
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        if(buttonID == R.id.RestartGame){
+                            playActivity.restartGame();
+                        } else if (buttonID == R.id.MainMenu){
+                            playActivity.goToMainMenu();
+                        }
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
     }
 
-    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which){
-                case DialogInterface.BUTTON_POSITIVE:
-                    Log.d("A1", "Yes selected");
-                    break;
-
-                case DialogInterface.BUTTON_NEGATIVE:
-                    Log.d("A2", "No selected");
-                    break;
-            }
-        }
-    };
 
     private void setButtons(){
         resumeButton = (ImageButton) (myView.findViewById(R.id.ResumeButton));
@@ -168,6 +169,8 @@ public class PauseSection extends DialogFragment{
         public void resumeGame();
         public void enableQuestions();
         public void disableQuestions();
+        public void restartGame();
+        public void goToMainMenu();
         public boolean questionsEnabled();
     }
 

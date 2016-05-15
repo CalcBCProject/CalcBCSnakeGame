@@ -17,7 +17,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     private static GameSection gameFrag;
     private static PauseSection pauseFrag;
     private WindowManager wm;
-    protected static boolean isPaused = false, questionsEnabled = true;
+    protected static boolean questionsEnabled = true;
 
 
 	@Override
@@ -54,7 +54,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public void pauseGame(){
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
-        isPaused = true;
+        gameFrag.pause();
 
         FragmentManager fm = getSupportFragmentManager();
         pauseFrag = new PauseSection();
@@ -63,5 +63,12 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
 
     public void resumeGame(){
         controlFrag.enableButtons();
+        gameFrag.resume();
+    }
+    public void restartGame(){
+        
+    }
+    public void goToMainMenu(){
+
     }
 }
