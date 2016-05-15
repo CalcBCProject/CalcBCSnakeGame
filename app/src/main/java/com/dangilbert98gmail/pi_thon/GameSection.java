@@ -36,6 +36,16 @@ public class GameSection extends Fragment
 
 		initialize();
 
+	    runnable = new Runnable() {
+		    @Override
+		    public void run()
+		    {
+			    move( direction );
+			    handler.postDelayed(this, delay);
+		    }
+	    };
+	    handler.postDelayed( runnable, delay );
+
         return v;
     }
 
@@ -133,6 +143,7 @@ public class GameSection extends Fragment
 	public void restart()
 	{
 		initialize();
+		pause();
 	}
 	public void initialize()
 	{
@@ -150,15 +161,7 @@ public class GameSection extends Fragment
 		images[ currLoc ] = head;
 		grid.setAdapter( new TileAdapter( this.getContext(), images ) );
 
-		runnable = new Runnable() {
-			@Override
-			public void run()
-			{
-				move( direction );
-				handler.postDelayed(this, delay);
-			}
-		};
-		handler.postDelayed( runnable, delay );
+
 	}
 	public int getCurrLoc()
 	{
