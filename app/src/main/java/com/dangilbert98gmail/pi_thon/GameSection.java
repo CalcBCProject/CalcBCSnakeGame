@@ -32,33 +32,9 @@ public class GameSection extends Fragment
     {
 	    View v = inflater.inflate(R.layout.fragment_game_section, container, false);
 
-	    direction = SnakeDirection.UP;
-
-	    images = new int [GRID_WIDTH * GRID_HEIGHT];
-	    for( int r = 0; r < GRID_HEIGHT; r++ )
-	    {
-		    for( int c = 0; c < GRID_WIDTH; c++ )
-		    {
-			    images[ (r*GRID_WIDTH) + c ] = empty;
-		    }
-	    }
-	    currLoc = ((GRID_HEIGHT/2) * GRID_WIDTH) + (GRID_WIDTH/2);
-	    images[ currLoc ] = head;
 	    grid = (GridView) v.findViewById(R.id.gameGrid);
-	    grid.setAdapter( new TileAdapter( this.getContext(), images ) );
 
-	    runnable = new Runnable() {
-		    @Override
-		    public void run()
-		    {
-			    move( direction );
-			    handler.postDelayed(this, delay);
-		    }
-	    };
-
-	    handler.postDelayed(runnable, delay);
-
-
+		initialize();
 
         return v;
     }
@@ -152,6 +128,36 @@ public class GameSection extends Fragment
 	}
 	public void resume()
 	{
+		handler.postDelayed( runnable, delay );
+	}
+	public void restart()
+	{
+		initialize();
+	}
+	public void initialize()
+	{
+		direction = SnakeDirection.UP;
+
+		images = new int [GRID_WIDTH * GRID_HEIGHT];
+		for( int r = 0; r < GRID_HEIGHT; r++ )
+		{
+			for( int c = 0; c < GRID_WIDTH; c++ )
+			{
+				images[ (r*GRID_WIDTH) + c ] = empty;
+			}
+		}
+		currLoc = ((GRID_HEIGHT/2) * GRID_WIDTH) + (GRID_WIDTH/2);
+		images[ currLoc ] = head;
+		grid.setAdapter( new TileAdapter( this.getContext(), images ) );
+
+		runnable = new Runnable() {
+			@Override
+			public void run()
+			{
+				move( direction );
+				handler.postDelayed(this, delay);
+			}
+		};
 		handler.postDelayed( runnable, delay );
 	}
 	public int getCurrLoc()
