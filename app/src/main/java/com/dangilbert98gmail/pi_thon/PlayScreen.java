@@ -66,7 +66,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         gameFrag.resume();
     }
     public void restartGame(){
-        
+        gameFrag.restart();
     }
     public void goToMainMenu(){
 
