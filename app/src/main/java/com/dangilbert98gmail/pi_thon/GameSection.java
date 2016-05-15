@@ -117,7 +117,7 @@ public class GameSection extends Fragment
 	}
 	public void move( SnakeDirection d )
 	{
-		Log.d("direction", d.toString() + "    " + getCurrLoc() );
+		//Log.d("direction", d.toString() + "    " + getCurrLoc() );
 		setImages( getCurrLoc(), empty );
 		switch( d )
 		{
@@ -135,7 +135,7 @@ public class GameSection extends Fragment
 	}
 	public void die(SnakeDirection d)
 	{
-		Log.d("direction", "died--------------"+d.toString() + "    " + getCurrLoc() );
+		//Log.d("direction", "died--------------"+d.toString() + "    " + getCurrLoc() );
 		//may death consume us all #trump2016
 	}
 	public int [] getImages()

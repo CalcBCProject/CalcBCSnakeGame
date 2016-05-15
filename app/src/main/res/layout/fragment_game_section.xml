@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/gameGrid"
         android:layout_gravity="center"
-        android:numColumns="8"/>
+        android:numColumns="8"
+        android:gravity="center"/>
 </FrameLayout>
