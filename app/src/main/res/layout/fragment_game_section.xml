@@ -10,5 +10,8 @@
         android:id="@+id/gameGrid"
         android:layout_gravity="center"
         android:numColumns="8"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:horizontalSpacing="0dp"
+        android:stackFromBottom="false"
+        android:stretchMode="spacingWidthUniform"/>
 </FrameLayout>
