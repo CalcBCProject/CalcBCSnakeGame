@@ -38,7 +38,7 @@
             android:width="150dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option Two"
+            android:text="Restart Game"
             android:textStyle="bold"
             android:id="@+id/Button2" />
 
