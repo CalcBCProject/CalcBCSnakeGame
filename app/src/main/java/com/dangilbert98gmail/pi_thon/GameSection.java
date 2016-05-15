@@ -17,8 +17,8 @@ public class GameSection extends Fragment
 	private Handler handler = new Handler();
 	private Runnable runnable;
 	private GridView grid;
-	private final int GRID_WIDTH = 8;
-	private final int GRID_HEIGHT = 10;
+	private final int GRID_WIDTH = 9;
+	private final int GRID_HEIGHT = 11;
 	private final int tail = R.drawable.red_tile;
 	private final int head = R.drawable.head;
 	private final int empty = R.drawable.background;
