@@ -62,5 +62,6 @@ public class PauseSection extends AppCompatActivity {
     public void resumeGame(){
         Intent intent = new Intent(this, PlayScreen.class);
         startActivity(intent);
+        finish();
     }
 }
