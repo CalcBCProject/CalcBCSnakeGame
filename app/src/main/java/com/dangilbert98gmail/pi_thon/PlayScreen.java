@@ -51,14 +51,38 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         return questionsEnabled;
     }
 
-    public void pauseGame(){
+    public void displayQuestion(Question q){
+        pauseGame(PauseType.QUESTION, q);
+    }
+
+    public void pauseGame(PauseType p){
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
         gameFrag.pause();
 
+        if (p == PauseType.PAUSE){
+            displayPauseScreen();
+        }
+    }
+
+    private void pauseGame(PauseType p, Question q){
+        controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
+        controlFrag.disableButtons();
+        gameFrag.pause();
+
+        if (p == PauseType.QUESTION){
+            displayQuestionScreen(q);
+        }
+    }
+
+    private void displayPauseScreen(){
         FragmentManager fm = getSupportFragmentManager();
         pauseFrag = new PauseSection();
         pauseFrag.show(fm, "fragment_pause_screen");
+    }
+
+    private void displayQuestionScreen(Question q){
+
     }
 
     public void resumeGame(){

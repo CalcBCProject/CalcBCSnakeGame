@@ -65,7 +65,7 @@ public class ControlSection extends Fragment {
         @Override
         public void onClick(View v) {
             if(playActivity != null) {
-                playActivity.pauseGame();
+                playActivity.pauseGame(PauseType.PAUSE);
 
                 /* Attempts at blurring background */
                 WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
@@ -157,6 +157,6 @@ public class ControlSection extends Fragment {
 
     interface ControlSectionListener{
         public void setSnakeDirection(SnakeDirection direction);
-        public void pauseGame();
+        public void pauseGame(PauseType p);
     }
 }
