@@ -55,7 +55,7 @@ public final class QuestionDatabase {
         if (ORIGIONAL_QUESTIONS.size() == 0) {
             inhabitOriginalExample();
         }
-        return getQuestion((int) (Math.random() * ORIGIONAL_QUESTIONS_EXAMPLES.size()));
+        return getQuestionExample((int) (Math.random() * ORIGIONAL_QUESTIONS_EXAMPLES.size()));
     }
 
     private static Question getQuestionExample(int n) {
