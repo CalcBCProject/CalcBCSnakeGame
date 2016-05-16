@@ -52,10 +52,6 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         return questionsEnabled;
     }
 
-    public void displayQuestion(Question q){
-        pauseGame(PauseType.QUESTION, q);
-    }
-
     public void pauseGame(PauseType p){
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
@@ -66,17 +62,6 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         }
     }
 
-    private void pauseGame(PauseType p, Question q){
-        //Possibly an un-needed method
-        controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
-        controlFrag.disableButtons();
-        gameFrag.pause();
-
-        if (p == PauseType.QUESTION){
-//            displayQuestionScreen(q);
-        }
-    }
-
     private void displayPauseScreen(){
         FragmentManager fm = getSupportFragmentManager();
         pauseFrag = new PauseSection();
@@ -84,6 +69,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     }
 
     public void displayQuestionScreen(){
+        controlFrag.disableButtons();
         FragmentManager fm = getSupportFragmentManager();
         questionFrag = new QuestionSection();
 //        questionFrag.setup(QuestionDatabase.getRandomQuestion());
