@@ -10,6 +10,7 @@ public class Question
     private String ans1;
 	private String ans2;
     private String ans3;
+	private String ans4;
     private int correctAns;
     private int solutionId;
 
@@ -18,13 +19,14 @@ public class Question
 
 	}
 
-    public Question( int questionImageId, String ans0, String ans1, String ans2, String ans3, int correctAns, int solutionId )
+    public Question( int questionImageId, String ans0, String ans1, String ans2, String ans3, String ans4, int correctAns, int solutionId )
     {
         this.questionImageId = questionImageId;
 	    this.ans0 = ans0;
 	    this.ans1 = ans1;
 	    this.ans2 = ans2;
 	    this.ans3 = ans3;
+		this.ans4 = ans3;
 	    this.correctAns = correctAns;
 	    this.solutionId = solutionId;
     }
