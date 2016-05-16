@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ public class GameSection extends Fragment
 	private Runnable runnable;
 	private GridView grid;
 	private GameSectionListener playActivity;
-	private static QuestionDatabase questionDB;
 	private final int GRID_WIDTH = 9;
 	private final int GRID_HEIGHT = 11;
 	private final int TAIL = R.drawable.red_tile;
@@ -28,6 +28,7 @@ public class GameSection extends Fragment
 	private int[] images;
 	private int delay;
 	private Queue queue;
+	private boolean paused = false;
 	private int maxQueueSize;
 
 	@Override
@@ -37,8 +38,6 @@ public class GameSection extends Fragment
 
 		grid = (GridView) v.findViewById( R.id.gameGrid );
 
-		questionDB = new QuestionDatabase();
-
 		initialize();
 
 		runnable = new Runnable()
@@ -47,7 +46,9 @@ public class GameSection extends Fragment
 			public void run()
 			{
 				move( direction );
-				handler.postDelayed( this, delay );
+				if(!paused) {
+					handler.postDelayed(this, delay);
+				}
 			}
 		};
 		handler.postDelayed( runnable, delay );
@@ -190,9 +191,9 @@ public class GameSection extends Fragment
 	}
 
 	public void eatConsumable(){
-		playActivity.displayQuestion(QuestionDatabase.getRandomQuestion());
-
 		maxQueueSize++;
+		pause();
+		playActivity.displayQuestionScreen();
 	}
 
 	public void die()
@@ -213,11 +214,13 @@ public class GameSection extends Fragment
 
 	public void pause()
 	{
+		paused = true;
 		handler.removeCallbacks( runnable );
 	}
 
 	public void resume()
 	{
+		paused = false;
 		handler.postDelayed( runnable, delay );
 	}
 
@@ -284,7 +287,7 @@ public class GameSection extends Fragment
 		return this.getContext();
 	}
 	interface GameSectionListener {
-		public void displayQuestion(Question q);
+		public void displayQuestionScreen();
 	}
 
 }

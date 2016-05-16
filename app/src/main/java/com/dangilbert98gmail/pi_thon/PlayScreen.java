@@ -11,11 +11,12 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener
 {
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
     private static PauseSection pauseFrag;
+    private static QuestionSection questionFrag;
     private WindowManager wm;
     protected static boolean questionsEnabled = true;
 
@@ -66,23 +67,27 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     }
 
     private void pauseGame(PauseType p, Question q){
+        //Possibly an un-needed method
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
         gameFrag.pause();
 
         if (p == PauseType.QUESTION){
-            displayQuestionScreen(q);
+//            displayQuestionScreen(q);
         }
     }
 
     private void displayPauseScreen(){
         FragmentManager fm = getSupportFragmentManager();
         pauseFrag = new PauseSection();
-        pauseFrag.show(fm, "fragment_pause_screen");
+        pauseFrag.show(fm, "dialog_fragment_pause");
     }
 
-    private void displayQuestionScreen(Question q){
-
+    public void displayQuestionScreen(){
+        FragmentManager fm = getSupportFragmentManager();
+        questionFrag = new QuestionSection();
+        questionFrag.setup(QuestionDatabase.getRandomQuestion());
+        questionFrag.show(fm, "dialog_fragment_questions");
     }
 
     public void resumeGame(){
