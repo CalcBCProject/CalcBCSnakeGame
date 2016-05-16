@@ -9,12 +9,20 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 /**
  * Created by Teddy on 5/15/2016.
  */
 public class QuestionSection extends DialogFragment {
     private QuestionSectionListener playActivity;
+    private ImageView pic;
+    private RadioGroup choiceGroup;
+    private RadioButton choice1, choice2, choice3, choice4;
+    private Button submitButton;
     private View myView;
 
     @Override
@@ -71,7 +79,13 @@ public class QuestionSection extends DialogFragment {
     }
 
     public void setButtons(){
-
+        choiceGroup = (RadioGroup) (myView.findViewById(R.id.AnswerChoices));
+        choice1 = (RadioButton)(myView.findViewById(R.id.Choice1));
+        choice2 = (RadioButton)(myView.findViewById(R.id.Choice2));
+        choice3 = (RadioButton)(myView.findViewById(R.id.Choice3));
+        choice4 = (RadioButton)(myView.findViewById(R.id.Choice4));
+        submitButton = (Button) (myView.findViewById(R.id.SubmitAnswerButton));
+        pic = (ImageView)(myView.findViewById(R.id.Question));
     }
 
     public void setButtonListeners(){

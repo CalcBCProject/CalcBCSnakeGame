@@ -17,7 +17,7 @@ public final class QuestionDatabase {
 	    {
 		    inhabitOriginal();
 	    }
-        return getQuestion((int)(Math.random() * NUM_QUESTIONS));
+        return getQuestion((int)(Math.random() * ORIGIONAL_QUESTIONS.size()));
     }
 
     private static Question getQuestion(int n){

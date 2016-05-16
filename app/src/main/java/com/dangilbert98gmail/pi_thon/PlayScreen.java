@@ -86,7 +86,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public void displayQuestionScreen(){
         FragmentManager fm = getSupportFragmentManager();
         questionFrag = new QuestionSection();
-        questionFrag.setup(QuestionDatabase.getRandomQuestion());
+//        questionFrag.setup(QuestionDatabase.getRandomQuestion());
         questionFrag.show(fm, "dialog_fragment_questions");
     }
 
