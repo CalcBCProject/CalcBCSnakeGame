@@ -66,12 +66,6 @@ public class ControlSection extends Fragment {
         public void onClick(View v) {
             if(playActivity != null) {
                 playActivity.pauseGame(PauseType.PAUSE);
-
-                /* Attempts at blurring background */
-                WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
-                lp.dimAmount = 0.4f;
-                getActivity().getWindow().setAttributes(lp);
-                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             }
         }
     }
