@@ -11,7 +11,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,7 +151,7 @@ public class PauseSection extends DialogFragment{
         menuButton = (Button) (myView.findViewById(R.id.MainMenu));
         restartButton = (Button) (myView.findViewById(R.id.RestartGame));
 
-        if(!playActivity.questionsEnabled()){
+        if(!playActivity.areQuestionsEnabled()){
             toggleQuestions.setChecked(true);
         }else{
             toggleQuestions.setChecked(false);
@@ -172,7 +171,7 @@ public class PauseSection extends DialogFragment{
         public void disableQuestions();
         public void restartGame();
         public void goToMainMenu();
-        public boolean questionsEnabled();
+        public boolean areQuestionsEnabled();
     }
 
     public void resumeGame(){

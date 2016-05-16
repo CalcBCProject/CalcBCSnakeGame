@@ -192,8 +192,10 @@ public class GameSection extends Fragment
 
 	public void eatConsumable(){
 		maxQueueSize++;
-		pause();
-		playActivity.displayQuestionScreen();
+		if(playActivity.areQuestionsEnabled()) {
+			pause();
+			playActivity.displayQuestionScreen();
+		}
 	}
 
 	public void die()
@@ -288,6 +290,7 @@ public class GameSection extends Fragment
 	}
 	interface GameSectionListener {
 		public void displayQuestionScreen();
+		public boolean areQuestionsEnabled();
 	}
 
 }

@@ -48,7 +48,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         questionsEnabled = true;
     }
 
-    public boolean questionsEnabled(){
+    public boolean areQuestionsEnabled(){
         return questionsEnabled;
     }
 

@@ -41,7 +41,7 @@
             android:text="Restart Game"
             android:textStyle="bold"
             android:id="@+id/RestartGame" />
-
+        <!--
         <Button
             android:background="@drawable/pausebuttons"
             android:layout_marginBottom="20dp"
@@ -51,6 +51,7 @@
             android:text="Option Three"
             android:textStyle="bold"
             android:id="@+id/Button3" />
+            -->
 
         <CheckBox
             android:background="@drawable/pausebuttons"

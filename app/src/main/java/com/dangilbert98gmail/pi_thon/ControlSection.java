@@ -130,7 +130,7 @@ public class ControlSection extends Fragment {
             }
             if (b.getId() == R.id.AnchorButton){
                 RelativeLayout.LayoutParams p = (RelativeLayout.LayoutParams)b.getLayoutParams();
-                p.width = (int)(dm.heightPixels * BUTTON_HEIGHT_RATIO) + 20;
+                p.width = (int)(dm.heightPixels * (BUTTON_HEIGHT_RATIO + .03)) + 20;
                 p.height = (int)(dm.widthPixels * BUTTON_WIDTH_RATIO);
                 b.setLayoutParams(p);
             }
