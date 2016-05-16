@@ -20,24 +20,16 @@ public final class QuestionDatabase {
         return getQuestion((int)(Math.random() * NUM_QUESTIONS));
     }
 
-    public static void resetDatabase()
-    {
-
-    }
-
     private static Question getQuestion(int n){
-        Question q = new Question();
-
-        //set q to random
-
+        Question q = questions.remove( n );
         return q;
     }
-	public static void restartDatabase()
+	public static void resetDatabase()
 	{
 		inhabitOriginal();
-		for( int i = 0; i < NUM_QUESTIONS; i++ )
+		for( int i = 0; i < ORIGIONAL_QUESTIONS.size(); i++ )
 		{
-			questions.add(ORIGIONAL_QUESTIONS.get(i) );
+			questions.add( ORIGIONAL_QUESTIONS.get(i) );
 		}
 	}
 	private static void inhabitOriginal()

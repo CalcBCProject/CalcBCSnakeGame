@@ -12,6 +12,12 @@ public class Question
     private String ans3;
     private int correctAns;
     private int solutionId;
+
+	public Question()
+	{
+
+	}
+
     public Question( int questionImageId, String ans0, String ans1, String ans2, String ans3, int correctAns, int solutionId )
     {
         this.questionImageId = questionImageId;
