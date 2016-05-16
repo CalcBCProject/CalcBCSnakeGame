@@ -16,6 +16,8 @@ public class GameSection extends Fragment
 	private Handler handler = new Handler();
 	private Runnable runnable;
 	private GridView grid;
+	private GameSectionListener playActivity;
+	private static QuestionDatabase questionDB;
 	private final int GRID_WIDTH = 9;
 	private final int GRID_HEIGHT = 11;
 	private final int TAIL = R.drawable.red_tile;
@@ -35,6 +37,8 @@ public class GameSection extends Fragment
 
 		grid = (GridView) v.findViewById( R.id.gameGrid );
 
+		questionDB = new QuestionDatabase();
+
 		initialize();
 
 		runnable = new Runnable()
@@ -49,6 +53,16 @@ public class GameSection extends Fragment
 		handler.postDelayed( runnable, delay );
 
 		return v;
+	}
+
+	@Override
+	public void onAttach(Context context){
+		super.onAttach(context);
+		try{
+			playActivity = (GameSectionListener)context;
+		} catch (Exception e){
+			throw new ClassCastException(playActivity.toString());
+		}
 	}
 
 	public boolean setDirection(SnakeDirection d)
@@ -161,7 +175,7 @@ public class GameSection extends Fragment
 		{
 			if( images[currLoc] == CONSUMABLE )
 			{
-				maxQueueSize++;
+				eatConsumable();
 				spawnConsumable();
 			}
 			setImages( currLoc, HEAD );
@@ -173,6 +187,12 @@ public class GameSection extends Fragment
 			}
 			grid.setAdapter( new TileAdapter( getGameContext(), images ) );
 		}
+	}
+
+	public void eatConsumable(){
+		playActivity.displayQuestion(questionDB.getRandomQuestion());
+
+		maxQueueSize++;
 	}
 
 	public void die()
@@ -262,6 +282,9 @@ public class GameSection extends Fragment
 	public Context getGameContext()
 	{
 		return this.getContext();
+	}
+	interface GameSectionListener {
+		public void displayQuestion(Question q);
 	}
 
 }

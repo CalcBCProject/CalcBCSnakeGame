@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener
 {
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
