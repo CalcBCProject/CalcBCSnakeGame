@@ -190,7 +190,7 @@ public class GameSection extends Fragment
 	}
 
 	public void eatConsumable(){
-		playActivity.displayQuestion(questionDB.getRandomQuestion());
+		playActivity.displayQuestion(QuestionDatabase.getRandomQuestion());
 
 		maxQueueSize++;
 	}

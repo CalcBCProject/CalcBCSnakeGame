@@ -8,15 +8,15 @@ import java.util.List;
 public class QuestionDatabase {
     private final int NUM_QUESTIONS = 40;
 
-    public Question getRandomQuestion(){
+    public static Question getRandomQuestion(){
         return getQuestion((int)(Math.random() * NUM_QUESTIONS));
     }
 
-    public void resetDatabase(){
+    public static void resetDatabase(){
 
     }
 
-    private Question getQuestion(int n){
+    private static Question getQuestion(int n){
         Question q = new Question();
 
         //set q to random
