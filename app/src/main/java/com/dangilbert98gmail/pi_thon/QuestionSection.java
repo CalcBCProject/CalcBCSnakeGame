@@ -105,7 +105,6 @@ public class QuestionSection extends DialogFragment {
     }
 
     public void setButtons() {
-        Log.d("A21", "Setting buttons");
         choiceGroup = (RadioGroup) (myView.findViewById(R.id.AnswerChoices));
         choice0 = (RadioButton) (myView.findViewById(R.id.Choice1));
         choice1 = (RadioButton) (myView.findViewById(R.id.Choice2));
@@ -117,11 +116,11 @@ public class QuestionSection extends DialogFragment {
     }
 
     public void setButtonListeners() {
-        choice0.setOnClickListener(new RadioButtonListener(1));
-        choice1.setOnClickListener(new RadioButtonListener(2));
-        choice2.setOnClickListener(new RadioButtonListener(3));
-        choice3.setOnClickListener(new RadioButtonListener(4));
-        choice4.setOnClickListener(new RadioButtonListener(5));
+        choice0.setOnClickListener(new RadioButtonListener(0));
+        choice1.setOnClickListener(new RadioButtonListener(1));
+        choice2.setOnClickListener(new RadioButtonListener(2));
+        choice3.setOnClickListener(new RadioButtonListener(3));
+        choice4.setOnClickListener(new RadioButtonListener(4));
     }
 
     private class ButtonListener implements View.OnClickListener {
@@ -134,9 +133,9 @@ public class QuestionSection extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
-                Log.d("A1", "Correct!");
+//                Log.d("A1", "Correct!");
             } else {
-                Log.d("A2", "Incorrect!");
+//                Log.d("A2", "Incorrect!");
             }
         }
     }
@@ -156,6 +155,7 @@ public class QuestionSection extends DialogFragment {
 
     interface QuestionSectionListener {
         public void resumeGame();
+
         public Question selectQuestion();
     }
 }
