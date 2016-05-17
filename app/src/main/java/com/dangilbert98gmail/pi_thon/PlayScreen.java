@@ -96,6 +96,6 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         Intent i = new Intent( PlayScreen.this, MenuScreen.class );
 
         startActivity( i );
-
+		finish();
     }
 }

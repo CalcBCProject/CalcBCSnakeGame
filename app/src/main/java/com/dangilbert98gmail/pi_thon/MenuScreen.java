@@ -1,6 +1,8 @@
 package com.dangilbert98gmail.pi_thon;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +16,8 @@ public class MenuScreen extends AppCompatActivity
 
 	private Button startGame, about;
 	private ImageButton help;
+	private Handler handler;
+	private Runnable runnable;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +34,7 @@ public class MenuScreen extends AppCompatActivity
 				Intent i = new Intent( MenuScreen.this, PlayScreen.class );
 
 				startActivity( i );
+				finish();
 			}
 		} );
 
@@ -49,9 +54,32 @@ public class MenuScreen extends AppCompatActivity
 			@Override
 			public void onClick(View v)
 			{
-				//help stuff
-			}
+				/*
+				handler = new Handler(  );
+				runnable = new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						setRandomOrientation();
+						handler.postDelayed( runnable, 250 );
+					}
+				};
+				handler.postDelayed( runnable, 1000 ); */ }
 		} );
+	}
+	public void setRandomOrientation()
+	{
+		int r = (int)(Math.random() * 4 );
+		int o;
+		switch( r )
+		{
+			case 0: o = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE; break;
+			case 1: o = ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE; break;
+			case 2: o = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT; break;
+			default: o = ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT;
+		}
+		setRequestedOrientation( o );
 	}
 
 }
