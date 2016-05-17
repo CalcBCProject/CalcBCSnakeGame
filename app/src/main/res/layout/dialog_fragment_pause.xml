@@ -5,12 +5,17 @@
     android:layout_gravity="center">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:id="@+id/ResumeButton"
         android:layout_gravity="right|top"
-        android:src="@mipmap/x_button_1"
-        android:background="#00ffffff"
+        android:src="@drawable/x_button_1"
+        android:scaleType="fitXY"
+        android:background="@drawable/pausebuttonsv2"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"/>
 

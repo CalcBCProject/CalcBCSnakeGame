@@ -92,13 +92,17 @@
         <ImageButton
             android:id="@+id/PauseButton"
 
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/pause_button_2"
-            android:background="#00ffffff"
+            android:src="@drawable/pause_button_1"
+            android:background="@drawable/pausebuttonsv2"
             android:layout_gravity="right|top" />
     </RelativeLayout>
 </FrameLayout>
