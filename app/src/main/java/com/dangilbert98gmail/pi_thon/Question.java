@@ -22,7 +22,7 @@ public class Question {
         this.ans1 = ans1;
         this.ans2 = ans2;
         this.ans3 = ans3;
-        this.ans4 = ans3;
+        this.ans4 = ans4;
         this.correctAns = correctAns;
         this.solutionId = solutionId;
     }

@@ -70,11 +70,10 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         controlFrag.disableButtons();
         FragmentManager fm = getSupportFragmentManager();
         questionFrag = new QuestionSection();
-        questionFrag.setup(selectQuestion());
         questionFrag.show(fm, "dialog_fragment_questions");
     }
 
-    private Question selectQuestion() {
+    public Question selectQuestion() {
         Question q = QuestionDatabase.getRandomQuestionExample();
         if (q != null) {
             return q;

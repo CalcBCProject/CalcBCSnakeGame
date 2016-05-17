@@ -37,6 +37,8 @@ public class QuestionSection extends DialogFragment {
         setButtons();
         setButtonListeners();
 
+        setup(playActivity.selectQuestion());
+
         getDialog().getWindow().setLayout(3000, 3000);
         return myView;
     }
@@ -56,8 +58,8 @@ public class QuestionSection extends DialogFragment {
         return new Dialog(getActivity(), getTheme()) {
             @Override
             public void onBackPressed() {
-                super.onBackPressed();
                 resumeGame();
+                super.onBackPressed();
             }
         };
     }
@@ -154,5 +156,6 @@ public class QuestionSection extends DialogFragment {
 
     interface QuestionSectionListener {
         public void resumeGame();
+        public Question selectQuestion();
     }
 }
