@@ -2,15 +2,19 @@ package com.dangilbert98gmail.pi_thon;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -58,8 +62,6 @@ public class QuestionSection extends DialogFragment {
         return new Dialog(getActivity(), getTheme()) {
             @Override
             public void onBackPressed() {
-                resumeGame();
-                super.onBackPressed();
             }
         };
     }
@@ -124,12 +126,44 @@ public class QuestionSection extends DialogFragment {
 
         @Override
         public void onClick(View v) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            TextView t = new TextView(getContext());
+
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
+                t.setText("Correct!");
                 Log.d("A1", "Correct!");
             } else {
+                t.setText("Incorrect!");
                 Log.d("A2", "Incorrect!");
             }
+
+            t.setTypeface(Typeface.DEFAULT_BOLD);
+            t.setTextSize(25);
+            t.setGravity(Gravity.CENTER_HORIZONTAL);
+            t.setPadding(0,50,0,0);
+            builder.setView(t).setPositiveButton("See Solution", dialogClickListener)
+                    .setNegativeButton("Return to Game", dialogClickListener);
+
+            AlertDialog alert = builder.create();
+            alert.setCanceledOnTouchOutside(false);
+            alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            alert.show();
         }
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        dismiss();
+                        playActivity.resumeGame();
+                        break;
+                }
+            }
+        };
     }
 
     interface QuestionSectionListener {
