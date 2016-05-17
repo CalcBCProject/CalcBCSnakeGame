@@ -132,7 +132,7 @@ public class QuestionSection extends DialogFragment {
             if(choiceGroup.getCheckedRadioButtonId() == -1){
                 return;
             }
-            
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             TextView t = new TextView(getContext());
 
