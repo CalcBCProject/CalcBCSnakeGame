@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
+<items version="2" />
 
-    <item
-        jar="C:\Apps\CalcBCSnakeGame\app\build\intermediates\exploded-aar\pl.droidsonroids.gif\android-gif-drawable\1.1.15\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="65067ef43929b76e5425aa6752d73fa4d4a80ed7">
-        <dex dex="C:\Apps\CalcBCSnakeGame\app\build\intermediates\pre-dexed\debug\pl.droidsonroids.gif-android-gif-drawable-1.1.15_9bd04db10abb3f0d31d5924dafdda73230511212.jar" />
-    </item>
-
-</items>
