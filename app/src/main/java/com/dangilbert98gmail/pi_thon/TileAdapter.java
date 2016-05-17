@@ -35,19 +35,18 @@ public class TileAdapter extends BaseAdapter
 	// create a new ImageView for each item referenced by the Adapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		ImageView imageView;
+		pl.droidsonroids.gif.GifTextView imageView;
 
 		if (convertView == null) {
-			imageView = new ImageView(mContext);
+			imageView = new pl.droidsonroids.gif.GifTextView(mContext);
 			imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			imageView.setPadding(8, 8, 8, 8);
 		}
 		else
 		{
-			imageView = (ImageView) convertView;
+			imageView = (pl.droidsonroids.gif.GifTextView) convertView;
 		}
-		imageView.setImageResource(mTiles[position]);
+		imageView.setBackgroundResource(mTiles[position]);
 		return imageView;
 	}
 }

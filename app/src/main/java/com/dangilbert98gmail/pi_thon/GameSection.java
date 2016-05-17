@@ -20,8 +20,8 @@ public class GameSection extends Fragment
 	private GameSectionListener playActivity;
 	private final int GRID_WIDTH = 9;
 	private final int GRID_HEIGHT = 11;
-	private final int TAIL = R.drawable.red_tile;
-	private final int HEAD = R.drawable.head;
+	private final int TAIL = R.drawable.tailtwo;
+	private final int HEAD = R.drawable.headtwo;
 	private final int EMPTY = R.drawable.background;
 	private final int CONSUMABLE = R.drawable.consumable;
 	private int currLoc;
