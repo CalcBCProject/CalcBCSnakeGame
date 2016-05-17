@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 /**
  * Created by Teddy on 5/15/2016.
@@ -25,8 +27,7 @@ public class QuestionSection extends DialogFragment {
     private RadioButton choice0, choice1, choice2, choice3, choice4;
     private Button submitButton;
     private View myView;
-    private int selected;
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,7 +36,6 @@ public class QuestionSection extends DialogFragment {
         getDialog().setCanceledOnTouchOutside(false);
 
         setButtons();
-        setButtonListeners();
 
         setup(playActivity.selectQuestion());
 
@@ -115,14 +115,6 @@ public class QuestionSection extends DialogFragment {
         pic = (ImageView) (myView.findViewById(R.id.Question));
     }
 
-    public void setButtonListeners() {
-        choice0.setOnClickListener(new RadioButtonListener(0));
-        choice1.setOnClickListener(new RadioButtonListener(1));
-        choice2.setOnClickListener(new RadioButtonListener(2));
-        choice3.setOnClickListener(new RadioButtonListener(3));
-        choice4.setOnClickListener(new RadioButtonListener(4));
-    }
-
     private class ButtonListener implements View.OnClickListener {
         RadioButton correctRadioButton;
 
@@ -133,23 +125,10 @@ public class QuestionSection extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
-//                Log.d("A1", "Correct!");
+                Log.d("A1", "Correct!");
             } else {
-//                Log.d("A2", "Incorrect!");
+                Log.d("A2", "Incorrect!");
             }
-        }
-    }
-
-    private class RadioButtonListener implements View.OnClickListener {
-        private int s;
-
-        public RadioButtonListener(int choiceNum) {
-            s = choiceNum;
-        }
-
-        @Override
-        public void onClick(View v) {
-            selected = s;
         }
     }
 
