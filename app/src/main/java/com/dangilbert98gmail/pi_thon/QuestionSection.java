@@ -129,13 +129,14 @@ public class QuestionSection extends DialogFragment {
 
         @Override
         public void onClick(View v) {
+            if(choiceGroup.getCheckedRadioButtonId() == -1){
+                return;
+            }
+            
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             TextView t = new TextView(getContext());
 
-            if(choiceGroup.getCheckedRadioButtonId() == -1){
-
-            }
-            else  if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
+            if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
                 t.setText("Correct!");
             } else {
                 t.setText("Incorrect!");
