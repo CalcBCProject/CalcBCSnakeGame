@@ -10,7 +10,12 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,12 +113,22 @@ public class PauseSection extends DialogFragment{
             TextView t = new TextView(getContext());
 
             if(buttonID == R.id.MainMenu){
-                t.setText("Return to Main Menu?");
+                String s1 = "Return to Main Menu?";
+                String s2 = "(All progress will be lost)";
+
+                SpannableString sp1 = new SpannableString(s1);
+                sp1.setSpan(new AbsoluteSizeSpan(100), 0, s1.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                SpannableString sp2 = new SpannableString(s2);
+                sp2.setSpan(new AbsoluteSizeSpan(50), 0, s2.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+                CharSequence s = TextUtils.concat(sp1, "\n\n", sp2);
+
+                t.setText(s);
             }else if (buttonID == R.id.RestartGame){
                 t.setText("Start a new game?");
+                t.setTextSize(25);
             }
             t.setTypeface(Typeface.DEFAULT_BOLD);
-            t.setTextSize(25);
             t.setGravity(Gravity.CENTER_HORIZONTAL);
             t.setPadding(0,50,0,0);
             builder.setView(t).setPositiveButton("Yes", dialogClickListener)
