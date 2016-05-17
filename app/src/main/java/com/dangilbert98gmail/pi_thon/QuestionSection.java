@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,7 +134,17 @@ public class QuestionSection extends DialogFragment {
                 return;
             }
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey (DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK &&
+                            event.getAction() == KeyEvent.ACTION_UP &&
+                            !event.isCanceled()) {
+                        return true;
+                    }
+                    return false;
+                }
+            });
             TextView t = new TextView(getContext());
 
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
@@ -151,6 +162,7 @@ public class QuestionSection extends DialogFragment {
 
             AlertDialog alert = builder.create();
             alert.setCanceledOnTouchOutside(false);
+
             alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             alert.show();
         }
