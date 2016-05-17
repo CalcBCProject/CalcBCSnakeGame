@@ -109,11 +109,11 @@ public class ControlSection extends Fragment {
         anchorButton = (Button)(myView.findViewById(R.id.AnchorButton));
         pauseButton = (ImageButton)(myView.findViewById(R.id.PauseButton));
 
-        myButtons.add(leftButton);
-        myButtons.add(rightButton);
-        myButtons.add(upButton);
-        myButtons.add(downButton);
-        myButtons.add(anchorButton);
+        myButtons.add( leftButton );
+        myButtons.add( rightButton );
+        myButtons.add( upButton );
+        myButtons.add( downButton );
+        myButtons.add( anchorButton );
 
         for(Button b : myButtons){
             if (b.getId() == R.id.LeftButton || b.getId() == R.id.RightButton){
@@ -142,11 +142,19 @@ public class ControlSection extends Fragment {
     }
 
     private void setupButtonListeners(){
-        leftButton.setOnClickListener( new ButtonListener(SnakeDirection.LEFT));
-        rightButton.setOnClickListener( new ButtonListener(SnakeDirection.RIGHT));
-        upButton.setOnClickListener( new ButtonListener(SnakeDirection.UP));
-        downButton.setOnClickListener( new ButtonListener(SnakeDirection.DOWN));
-        pauseButton.setOnClickListener( new ImageButtonListener());
+        leftButton.setOnClickListener( new ButtonListener( SnakeDirection.LEFT ) );
+        rightButton.setOnClickListener( new ButtonListener( SnakeDirection.RIGHT ) );
+        upButton.setOnClickListener( new ButtonListener( SnakeDirection.UP ) );
+        downButton.setOnClickListener( new ButtonListener( SnakeDirection.DOWN ) );
+        pauseButton.setOnClickListener( new ImageButtonListener() );
+    }
+
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+	    pauseButton.performClick();
     }
 
     interface ControlSectionListener{

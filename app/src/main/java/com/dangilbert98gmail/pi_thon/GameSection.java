@@ -18,13 +18,14 @@ public class GameSection extends Fragment
 	private Handler handler = new Handler();
 	private Runnable runnable;
 	private GridView grid;
-	private GameSectionListener playActivity;
+	private PlayScreen playActivity;
 	private final int GRID_WIDTH = 9;
 	private final int GRID_HEIGHT = 11;
 	private final int TAIL = R.drawable.red_tile;
 	private final int HEAD = R.drawable.head;
 	private final int EMPTY = R.drawable.background;
 	private final int CONSUMABLE = R.drawable.consumable;
+	private boolean shouldDie;
 	private int currLoc;
 	private int[] images;
 	private int delay;
@@ -35,6 +36,8 @@ public class GameSection extends Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
+		//Log.d("create", "created" );
+
 		View v = inflater.inflate( R.layout.fragment_game_section, container, false );
 
 		grid = (GridView) v.findViewById( R.id.gameGrid );
@@ -61,7 +64,7 @@ public class GameSection extends Fragment
 	public void onAttach(Context context){
 		super.onAttach( context );
 		try{
-			playActivity = (GameSectionListener)context;
+			playActivity = (PlayScreen)context;
 		} catch (Exception e){
 			throw new ClassCastException(playActivity.toString());
 		}
@@ -89,7 +92,6 @@ public class GameSection extends Fragment
 		//Log.d("direction", d.toString() + "    " + getCurrLoc() );
 		setImages( getCurrLoc(), EMPTY );
 		int prevLoc = getCurrLoc();
-		boolean shouldDie = false;
 		int tempLoc = currLoc;
 		switch( d )
 		{
@@ -159,7 +161,8 @@ public class GameSection extends Fragment
 
 	public void die()
 	{
-		//Log.d("direction", "died--------------"+d.toString() + "    " + getCurrLoc() );
+		//.d("intents boi", "" + shouldDie + " - " + currLoc );
+		playActivity.goToMainMenu();
 		//may death consume us all #trump2016
 	}
 
@@ -190,6 +193,7 @@ public class GameSection extends Fragment
 		initialize();
 		pause();
 	}
+
 	public boolean spawnConsumable()
 	{
 		boolean full = true;
@@ -221,6 +225,8 @@ public class GameSection extends Fragment
 	{
 		queue = new Queue();
 		maxQueueSize = 0;
+
+		shouldDie = false;
 
 		direction = SnakeDirection.UP;
 

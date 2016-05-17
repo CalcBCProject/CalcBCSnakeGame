@@ -5,7 +5,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="PI-thon"
+        android:label="@string/app_name"
+        android:isGame="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".PlayScreen"
@@ -17,8 +18,7 @@
         </activity>
         <activity
             android:name=".MenuScreen"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_menu" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
