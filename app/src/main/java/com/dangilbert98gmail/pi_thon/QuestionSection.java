@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,11 +74,11 @@ public class QuestionSection extends DialogFragment {
 
     public void setup(Question q) {
         pic.setImageDrawable(getContext().getResources().getDrawable(q.getQuestionImageId()));
-        choice0.setCompoundDrawablesWithIntrinsicBounds(q.getAns0(), null, null, null);
-        choice1.setCompoundDrawablesWithIntrinsicBounds(q.getAns1(), null, null, null);
-        choice2.setCompoundDrawablesWithIntrinsicBounds(q.getAns2(), null, null, null);
-        choice3.setCompoundDrawablesWithIntrinsicBounds(q.getAns3(), null, null, null);
-        choice4.setCompoundDrawablesWithIntrinsicBounds(q.getAns4(), null, null, null);
+        choice0.setCompoundDrawablesWithIntrinsicBounds(q.getAns0(), 0, 0, 0);
+        choice1.setCompoundDrawablesWithIntrinsicBounds(q.getAns1(), 0, 0, 0);
+        choice2.setCompoundDrawablesWithIntrinsicBounds(q.getAns2(), 0, 0, 0);
+        choice3.setCompoundDrawablesWithIntrinsicBounds(q.getAns3(), 0, 0, 0);
+        choice4.setCompoundDrawablesWithIntrinsicBounds(q.getAns4(), 0, 0, 0);
         switch (q.getCorrectAns()) {
             case 0:
                 submitButton.setOnClickListener(new ButtonListener(choice0));
@@ -102,6 +103,7 @@ public class QuestionSection extends DialogFragment {
     }
 
     public void setButtons() {
+        Log.d("A21", "Setting buttons");
         choiceGroup = (RadioGroup) (myView.findViewById(R.id.AnswerChoices));
         choice0 = (RadioButton) (myView.findViewById(R.id.Choice1));
         choice1 = (RadioButton) (myView.findViewById(R.id.Choice2));
@@ -130,9 +132,9 @@ public class QuestionSection extends DialogFragment {
         @Override
         public void onClick(View v) {
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
-                //Right Answer
-            } else{
-                //Wrong Answer
+                Log.d("A1", "Correct!");
+            } else {
+                Log.d("A2", "Incorrect!");
             }
         }
     }

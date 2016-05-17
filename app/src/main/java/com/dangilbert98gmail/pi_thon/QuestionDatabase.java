@@ -1,5 +1,7 @@
 package com.dangilbert98gmail.pi_thon;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,17 +50,21 @@ public final class QuestionDatabase {
     private static void inhabitOriginalExample() {
         if (ORIGIONAL_QUESTIONS_EXAMPLES.size() == 0) {
             ORIGIONAL_QUESTIONS_EXAMPLES.add(new Question(R.drawable.example_question_1, R.drawable.example_question_1_ans_1, R.drawable.example_question_1_ans_2, R.drawable.example_question_1_ans_3, R.drawable.example_question_1_ans_4, R.drawable.example_question_1_ans_5, 3, -1 /*Temp*/));
+            Log.d("A4", "Added " + ORIGIONAL_QUESTIONS_EXAMPLES.toString());
         }
     }
 
     public static Question getRandomQuestionExample() {
         if (ORIGIONAL_QUESTIONS.size() == 0) {
-            inhabitOriginalExample();
+            Log.d("A3", "Creating examples");
+            resetDatabaseExample();
         }
         return getQuestionExample((int) (Math.random() * ORIGIONAL_QUESTIONS_EXAMPLES.size()));
     }
 
     private static Question getQuestionExample(int n) {
+        Log.d("A5", "Getting question at index: " + n + ". Size is: " + questionsExample.size());
+        Log.d("A6", "Question at Position " + n + " is " + questionsExample.get(n));
         Question q = questionsExample.remove(n);
         return q;
     }
