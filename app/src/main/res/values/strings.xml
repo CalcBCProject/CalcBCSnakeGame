@@ -40,4 +40,5 @@
         <item>@color/lightgrey</item>
         <item>@color/darkgrey</item>
     </integer-array>
+    <string name="title_activity_menu">Menu</string>
 </resources>

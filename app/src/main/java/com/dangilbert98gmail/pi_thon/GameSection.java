@@ -58,7 +58,7 @@ public class GameSection extends Fragment
 
 	@Override
 	public void onAttach(Context context){
-		super.onAttach(context);
+		super.onAttach( context );
 		try{
 			playActivity = (GameSectionListener)context;
 		} catch (Exception e){
@@ -68,55 +68,19 @@ public class GameSection extends Fragment
 
 	public boolean setDirection(SnakeDirection d)
 	{
-		if( d == SnakeDirection.DOWN )
+		if( d == direction )
 		{
-			if( direction == SnakeDirection.DOWN )
+			return false;
+		}
+		if( maxQueueSize > 0 )
+		{
+			if( direction == getOppositeDirection( d ) )
 			{
 				return false;
 			}
-			else
-			{
-				direction = SnakeDirection.DOWN;
-				return true;
-			}
 		}
-		if( d == SnakeDirection.UP )
-		{
-			if( direction == SnakeDirection.UP )
-			{
-				return false;
-			}
-			else
-			{
-				direction = SnakeDirection.UP;
-				return true;
-			}
-		}
-		if( d == SnakeDirection.LEFT )
-		{
-			if( direction == SnakeDirection.LEFT )
-			{
-				return false;
-			}
-			else
-			{
-				direction = SnakeDirection.LEFT;
-				return true;
-			}
-		}
-		if( d == SnakeDirection.RIGHT )
-		{
-			if( direction == SnakeDirection.RIGHT )
-			{
-				return false;
-			}
-			else
-			{
-				direction = SnakeDirection.RIGHT;
-				return true;
-			}
-		}
-		return false;
+		direction = d;
+		return true;
 	}
 
 	public void move(SnakeDirection d)
@@ -132,19 +96,11 @@ public class GameSection extends Fragment
 				{
 					shouldDie = true;
 				}
-				else
-				{
-					currLoc = getCurrLoc() - GRID_WIDTH;
-				}
 				break;
 			case DOWN:
 				if( ( getCurrLoc() + GRID_WIDTH ) >= ( GRID_HEIGHT * GRID_WIDTH ) )
 				{
 					shouldDie = true;
-				}
-				else
-				{
-					currLoc = getCurrLoc() + GRID_WIDTH;
 				}
 				break;
 			case RIGHT:
@@ -152,21 +108,18 @@ public class GameSection extends Fragment
 				{
 					shouldDie = true;
 				}
-				else
-				{
-					currLoc = getCurrLoc() + 1;
-				}
 				break;
 			case LEFT:
 				if( getCurrLoc() % GRID_WIDTH == 0 )
 				{
 					shouldDie = true;
 				}
-				else
-				{
-					currLoc = getCurrLoc() - 1;
-				}
 				break;
+		}
+		currLoc = getAdjacentLocation( currLoc, d );
+		if( images[currLoc] == TAIL )
+		{
+			shouldDie = true;
 		}
 		if( shouldDie )
 		{
@@ -184,7 +137,7 @@ public class GameSection extends Fragment
 			queue.enqueue( prevLoc );
 			if( queue.size() > maxQueueSize )
 			{
-				setImages( (int)queue.dequeue(), EMPTY );
+				setImages( (int) queue.dequeue(), EMPTY );
 			}
 			grid.setAdapter( new TileAdapter( getGameContext(), images ) );
 		}
@@ -283,7 +236,28 @@ public class GameSection extends Fragment
 	{
 		return currLoc;
 	}
-
+	private int getAdjacentLocation( int startLoc, SnakeDirection d )
+	{
+		int loc;
+		switch( d )
+		{
+			case UP: loc = startLoc - GRID_WIDTH; break;
+			case DOWN: loc = startLoc + GRID_WIDTH; break;
+			case LEFT: loc = startLoc - 1; break;
+			default: loc = startLoc + 1; break;
+		}
+		return loc;
+	}
+	private SnakeDirection getOppositeDirection( SnakeDirection initD )
+	{
+		switch( initD )
+		{
+			case UP: return SnakeDirection.DOWN;
+			case DOWN: return SnakeDirection.UP;
+			case LEFT: return SnakeDirection.RIGHT;
+			default: return SnakeDirection.LEFT;
+		}
+	}
 	public Context getGameContext()
 	{
 		return this.getContext();

@@ -7,16 +7,15 @@ public class Question {
     private int questionImageId;
     private int ans0;
     private int ans1;
-    private int ans2;
+	private int ans2;
     private int ans3;
-    private int ans4;
+	private int ans4;
     private int correctAns;
     private int solutionId;
 
     public Question() {
 
     }
-
     public Question(int questionImageId, int ans0, int ans1, int ans2, int ans3, int ans4, int correctAns, int solutionId) {
         this.questionImageId = questionImageId;
         this.ans0 = ans0;
