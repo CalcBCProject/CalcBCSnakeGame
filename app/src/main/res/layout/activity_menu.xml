@@ -22,12 +22,11 @@
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/MainMenuOptions">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/menuImage"
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="center_horizontal"/>
+            android:background="@drawable/que"
+            />
 
         <Button
             android:background="@drawable/pausebuttons"
@@ -49,5 +48,6 @@
             android:id="@+id/aboutButton"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
+
 
 </FrameLayout>
