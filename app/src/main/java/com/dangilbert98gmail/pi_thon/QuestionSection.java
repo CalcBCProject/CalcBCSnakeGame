@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,6 +27,7 @@ import android.widget.TextView;
  */
 public class QuestionSection extends DialogFragment {
     private QuestionSectionListener playActivity;
+    private Question myQuestion;
     private ImageView pic;
     private RadioGroup choiceGroup;
     private RadioButton choice0, choice1, choice2, choice3, choice4;
@@ -77,6 +79,7 @@ public class QuestionSection extends DialogFragment {
     }
 
     public void setup(Question q) {
+        myQuestion = q;
         pic.setImageDrawable(getContext().getResources().getDrawable(q.getQuestionImageId()));
         choice0.setCompoundDrawablesWithIntrinsicBounds(q.getAns0(), 0, 0, 0);
         choice1.setCompoundDrawablesWithIntrinsicBounds(q.getAns1(), 0, 0, 0);
@@ -129,12 +132,13 @@ public class QuestionSection extends DialogFragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             TextView t = new TextView(getContext());
 
-            if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
+            if(choiceGroup.getCheckedRadioButtonId() == -1){
+
+            }
+            else  if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
                 t.setText("Correct!");
-                Log.d("A1", "Correct!");
             } else {
                 t.setText("Incorrect!");
-                Log.d("A2", "Incorrect!");
             }
 
             t.setTypeface(Typeface.DEFAULT_BOLD);
@@ -155,11 +159,13 @@ public class QuestionSection extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
+                        playActivity.buildSolutionSection();
+                        dismiss();
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
                         dismiss();
-                        playActivity.resumeGame();
+                        resumeGame();
                         break;
                 }
             }
@@ -168,7 +174,7 @@ public class QuestionSection extends DialogFragment {
 
     interface QuestionSectionListener {
         public void resumeGame();
-
         public Question selectQuestion();
+        public void buildSolutionSection();
     }
 }
