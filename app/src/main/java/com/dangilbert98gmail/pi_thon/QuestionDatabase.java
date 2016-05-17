@@ -49,7 +49,7 @@ public final class QuestionDatabase {
 
     private static void inhabitOriginalExample() {
         if (ORIGIONAL_QUESTIONS_EXAMPLES.size() == 0) {
-            ORIGIONAL_QUESTIONS_EXAMPLES.add(new Question(R.drawable.example_question_1, R.drawable.example_question_1_ans_1, R.drawable.example_question_1_ans_2, R.drawable.example_question_1_ans_3, R.drawable.example_question_1_ans_4, R.drawable.example_question_1_ans_5, 3, -1 /*Temp*/));
+            ORIGIONAL_QUESTIONS_EXAMPLES.add(new Question(R.drawable.example_question_1, R.drawable.example_question_1_ans_1, R.drawable.example_question_1_ans_2, R.drawable.example_question_1_ans_3, R.drawable.example_question_1_ans_4, R.drawable.example_question_1_ans_5, 3, R.drawable.example_question_1_solution));
         }
     }
 

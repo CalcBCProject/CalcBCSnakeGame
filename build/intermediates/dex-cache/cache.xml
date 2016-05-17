@@ -2,11 +2,67 @@
 <items version="2" >
 
     <item
-        jar="C:\Apps\CalcBCSnakeGame\app\build\intermediates\exploded-aar\pl.droidsonroids.gif\android-gif-drawable\1.1.15\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_3274e62c50bd65fdde51e72319c50652beda81c5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\pl.droidsonroids.gif\android-gif-drawable\1.1.15\jars\classes.jar"
+        jumboMode="true"
         revision="23.0.2"
         sha1="65067ef43929b76e5425aa6752d73fa4d4a80ed7">
-        <dex dex="C:\Apps\CalcBCSnakeGame\app\build\intermediates\pre-dexed\debug\pl.droidsonroids.gif-android-gif-drawable-1.1.15_9bd04db10abb3f0d31d5924dafdda73230511212.jar" />
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\pl.droidsonroids.gif-android-gif-drawable-1.1.15_4c27d7d5dfc9b8a3a4daf0435b5e2fca0e65ea8f\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5f581e280fd4c9e80a7656dbc872a30e7ed21662">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_f1026105d260fa3479633b14c52f47f46db8ac95\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_94168985065a01a65fd2f35d9f9f39cb672f8b69\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_00fc2b68231bb840786f4ca80e2f7b9cd7808867\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_3403cc4850d858ea64aa1146a5d8c1e6bcc877aa\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_11f75d85f0c4af841065c9039ac9a1c72c76aa08\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_071565b2b69a009b8cce7c8fa7e45262e3cecb3a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8e20d416c2a1511d88219dccd7c9ca07b0d9bcea">
+        <dex dex="C:\Users\Teddy\Git Bash\CalcBCSnakeGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8605b086df6bc7089ad30f7eee115c44fba32822\classes.dex" />
     </item>
 
 </items>

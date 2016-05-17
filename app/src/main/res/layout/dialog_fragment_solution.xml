@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/SolutionSection">
+
+    <ScrollView
+        android:id="@+id/SolutionContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/question_background"
+        android:layout_weight=".85"
+        android:layout_marginTop="10dp"
+        android:fillViewport="false">
+
+        <ImageView
+            android:id="@+id/Solution"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/example_question_1_solution" />
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:longClickable="false"
+        android:id="@+id/ButtonContainer">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Return to Game"
+            android:id="@+id/ReturnButton"
+            android:background="@drawable/pausebuttons"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</LinearLayout>
