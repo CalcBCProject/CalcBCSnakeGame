@@ -21,9 +21,10 @@ public class QuestionSection extends DialogFragment {
     private QuestionSectionListener playActivity;
     private ImageView pic;
     private RadioGroup choiceGroup;
-    private RadioButton choice1, choice2, choice3, choice4;
+    private RadioButton choice0, choice1, choice2, choice3, choice4;
     private Button submitButton;
     private View myView;
+    private int selected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +41,7 @@ public class QuestionSection extends DialogFragment {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         Dialog dialog = getDialog();
         if (dialog != null) {
@@ -51,7 +52,7 @@ public class QuestionSection extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new Dialog(getActivity(), getTheme()){
+        return new Dialog(getActivity(), getTheme()) {
             @Override
             public void onBackPressed() {
                 super.onBackPressed();
@@ -61,37 +62,95 @@ public class QuestionSection extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
-        try{
-            playActivity = (QuestionSectionListener)context;
-        } catch (Exception e){
+        try {
+            playActivity = (QuestionSectionListener) context;
+        } catch (Exception e) {
             throw new ClassCastException(playActivity.toString());
         }
     }
 
-    public void setup(Question q){
-
+    public void setup(Question q) {
+        pic.setImageDrawable(getContext().getResources().getDrawable(q.getQuestionImageId()));
+        choice0.setCompoundDrawablesWithIntrinsicBounds(q.getAns0(), null, null, null);
+        choice1.setCompoundDrawablesWithIntrinsicBounds(q.getAns1(), null, null, null);
+        choice2.setCompoundDrawablesWithIntrinsicBounds(q.getAns2(), null, null, null);
+        choice3.setCompoundDrawablesWithIntrinsicBounds(q.getAns3(), null, null, null);
+        choice4.setCompoundDrawablesWithIntrinsicBounds(q.getAns4(), null, null, null);
+        switch (q.getCorrectAns()) {
+            case 0:
+                submitButton.setOnClickListener(new ButtonListener(choice0));
+                break;
+            case 1:
+                submitButton.setOnClickListener(new ButtonListener(choice1));
+                break;
+            case 2:
+                submitButton.setOnClickListener(new ButtonListener(choice2));
+                break;
+            case 3:
+                submitButton.setOnClickListener(new ButtonListener(choice3));
+                break;
+            case 4:
+                submitButton.setOnClickListener(new ButtonListener(choice4));
+                break;
+        }
     }
 
-    public void resumeGame(){
+    public void resumeGame() {
         playActivity.resumeGame();
     }
 
-    public void setButtons(){
+    public void setButtons() {
         choiceGroup = (RadioGroup) (myView.findViewById(R.id.AnswerChoices));
-        choice1 = (RadioButton)(myView.findViewById(R.id.Choice1));
-        choice2 = (RadioButton)(myView.findViewById(R.id.Choice2));
-        choice3 = (RadioButton)(myView.findViewById(R.id.Choice3));
-        choice4 = (RadioButton)(myView.findViewById(R.id.Choice4));
+        choice0 = (RadioButton) (myView.findViewById(R.id.Choice1));
+        choice1 = (RadioButton) (myView.findViewById(R.id.Choice2));
+        choice2 = (RadioButton) (myView.findViewById(R.id.Choice3));
+        choice3 = (RadioButton) (myView.findViewById(R.id.Choice4));
+        choice4 = (RadioButton) (myView.findViewById(R.id.Choice5));
         submitButton = (Button) (myView.findViewById(R.id.SubmitAnswerButton));
-        pic = (ImageView)(myView.findViewById(R.id.Question));
+        pic = (ImageView) (myView.findViewById(R.id.Question));
     }
 
-    public void setButtonListeners(){
-
+    public void setButtonListeners() {
+        choice0.setOnClickListener(new RadioButtonListener(1));
+        choice1.setOnClickListener(new RadioButtonListener(2));
+        choice2.setOnClickListener(new RadioButtonListener(3));
+        choice3.setOnClickListener(new RadioButtonListener(4));
+        choice4.setOnClickListener(new RadioButtonListener(5));
     }
-    interface QuestionSectionListener{
+
+    private class ButtonListener implements View.OnClickListener {
+        RadioButton correctRadioButton;
+
+        public ButtonListener(RadioButton r) {
+            correctRadioButton = r;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
+                //Right Answer
+            } else{
+                //Wrong Answer
+            }
+        }
+    }
+
+    private class RadioButtonListener implements View.OnClickListener {
+        private int s;
+
+        public RadioButtonListener(int choiceNum) {
+            s = choiceNum;
+        }
+
+        @Override
+        public void onClick(View v) {
+            selected = s;
+        }
+    }
+
+    interface QuestionSectionListener {
         public void resumeGame();
     }
 }

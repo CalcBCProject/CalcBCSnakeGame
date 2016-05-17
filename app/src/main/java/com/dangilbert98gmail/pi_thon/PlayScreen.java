@@ -11,8 +11,7 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener
-{
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener {
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
     private static PauseSection pauseFrag;
@@ -21,83 +20,80 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     protected static boolean questionsEnabled = true;
 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.activity_play_screen );
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_play_screen);
 
         setVariables();
-	}
+    }
 
-    private void setVariables(){
-        controlFrag = (ControlSection)(getSupportFragmentManager().findFragmentById(R.id.ControlSection));
+    private void setVariables() {
+        controlFrag = (ControlSection) (getSupportFragmentManager().findFragmentById(R.id.ControlSection));
         gameFrag = (GameSection) (getSupportFragmentManager().findFragmentById(R.id.GameSection));
         wm = (WindowManager) (getSystemService(Context.WINDOW_SERVICE));
     }
 
-    public void setSnakeDirection(SnakeDirection d){
+    public void setSnakeDirection(SnakeDirection d) {
         gameFrag.setDirection(d);
     }
 
-    public void disableQuestions(){
+    public void disableQuestions() {
         questionsEnabled = false;
     }
 
-    public void enableQuestions(){
+    public void enableQuestions() {
         questionsEnabled = true;
     }
 
-    public boolean areQuestionsEnabled(){
+    public boolean areQuestionsEnabled() {
         return questionsEnabled;
     }
 
-    public void displayQuestion(Question q){
-        pauseGame(PauseType.QUESTION, q);
-    }
-
-    public void pauseGame(PauseType p){
+    public void pauseGame(PauseType p) {
         controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
         controlFrag.disableButtons();
         gameFrag.pause();
 
-        if (p == PauseType.PAUSE){
+        if (p == PauseType.PAUSE) {
             displayPauseScreen();
         }
     }
 
-    private void pauseGame(PauseType p, Question q){
-        //Possibly an un-needed method
-        controlFrag.setParentInfo(findViewById(R.id.PlayScreen));
-        controlFrag.disableButtons();
-        gameFrag.pause();
-
-        if (p == PauseType.QUESTION){
-//            displayQuestionScreen(q);
-        }
-    }
-
-    private void displayPauseScreen(){
+    private void displayPauseScreen() {
         FragmentManager fm = getSupportFragmentManager();
         pauseFrag = new PauseSection();
         pauseFrag.show(fm, "dialog_fragment_pause");
     }
 
-    public void displayQuestionScreen(){
+    public void displayQuestionScreen() {
+        controlFrag.disableButtons();
         FragmentManager fm = getSupportFragmentManager();
         questionFrag = new QuestionSection();
-//        questionFrag.setup(QuestionDatabase.getRandomQuestion());
+        questionFrag.setup(selectQuestion());
         questionFrag.show(fm, "dialog_fragment_questions");
     }
 
-    public void resumeGame(){
+    private Question selectQuestion() {
+        Question q = QuestionDatabase.getRandomQuestionExample();
+        if (q != null) {
+            return q;
+        } else {
+            QuestionDatabase.resetDatabaseExample();
+            return selectQuestion();
+        }
+    }
+
+    public void resumeGame() {
         controlFrag.enableButtons();
         gameFrag.resume();
     }
-    public void restartGame(){
+
+    public void restartGame() {
         gameFrag.restart();
     }
-    public void goToMainMenu(){
+
+    public void goToMainMenu() {
 
     }
 }
