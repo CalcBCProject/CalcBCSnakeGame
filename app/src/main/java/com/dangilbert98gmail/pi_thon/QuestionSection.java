@@ -25,9 +25,8 @@ import android.widget.TextView;
 /**
  * Created by Teddy on 5/15/2016.
  */
-public class QuestionSection extends DialogFragment implements SolutionSection.SolutionSectionListener {
+public class QuestionSection extends DialogFragment {
     private QuestionSectionListener playActivity;
-    private DialogFragment solutionFrag;
     private Question myQuestion;
     private ImageView pic;
     private RadioGroup choiceGroup;
@@ -133,7 +132,10 @@ public class QuestionSection extends DialogFragment implements SolutionSection.S
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             TextView t = new TextView(getContext());
 
-            if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
+            if(choiceGroup.getCheckedRadioButtonId() == -1){
+
+            }
+            else  if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
                 t.setText("Correct!");
             } else {
                 t.setText("Incorrect!");
@@ -157,9 +159,7 @@ public class QuestionSection extends DialogFragment implements SolutionSection.S
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        solutionFrag = new SolutionSection();
-                        solutionFrag.show(fm, "dialog_fragment_solution");
+                        playActivity.buildSolutionSection();
                         dismiss();
                         break;
 
@@ -172,13 +172,9 @@ public class QuestionSection extends DialogFragment implements SolutionSection.S
         };
     }
 
-
-    public int getSolutionID(){
-        return myQuestion.getSolutionId();
-    }
-
     interface QuestionSectionListener {
         public void resumeGame();
         public Question selectQuestion();
+        public void buildSolutionSection();
     }
 }

@@ -11,11 +11,13 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener {
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener, SolutionSection.SolutionSectionListener{
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
     private static PauseSection pauseFrag;
     private static QuestionSection questionFrag;
+    private static SolutionSection solutionFrag;
+    private static Question q;
     private WindowManager wm;
     protected static boolean questionsEnabled = true;
 
@@ -74,7 +76,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     }
 
     public Question selectQuestion() {
-        Question q = QuestionDatabase.getRandomQuestionExample();
+        q = QuestionDatabase.getRandomQuestionExample();
         if (q != null) {
             return q;
         } else {
@@ -88,14 +90,22 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         gameFrag.resume();
     }
 
+    public void buildSolutionSection(){
+        FragmentManager fm = getSupportFragmentManager();
+        solutionFrag = new SolutionSection();
+        solutionFrag.show(fm, "dialog_fragment_solution");
+    }
+
     public void restartGame() {
         gameFrag.restart();
     }
 
+    public int getSolutionID(){
+        return q.getSolutionId();
+    }
+
     public void goToMainMenu() {
         Intent i = new Intent( PlayScreen.this, MenuScreen.class );
-
         startActivity( i );
-
     }
 }

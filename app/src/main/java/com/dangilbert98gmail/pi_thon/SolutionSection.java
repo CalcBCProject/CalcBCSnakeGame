@@ -25,11 +25,10 @@ public class SolutionSection extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.dialog_fragment_questions, container, false);
+        myView = inflater.inflate(R.layout.dialog_fragment_solution, container, false);
         getDialog().setCanceledOnTouchOutside(false);
 
         setButtons();
-
         setup(playActivity.getSolutionID());
 
         getDialog().getWindow().setLayout(3000, 3000);
@@ -72,7 +71,7 @@ public class SolutionSection extends DialogFragment {
 
     public void setup(int solutionID){
         pic.setImageDrawable(getContext().getResources().getDrawable(solutionID));
-
+        returnButton.setOnClickListener(new ButtonListener());
     }
 
     public class ButtonListener implements View.OnClickListener{
