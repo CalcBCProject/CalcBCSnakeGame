@@ -107,5 +107,6 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public void goToMainMenu() {
         Intent i = new Intent( PlayScreen.this, MenuScreen.class );
         startActivity( i );
+		finish();
     }
 }
