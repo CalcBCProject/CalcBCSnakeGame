@@ -89,6 +89,7 @@ public class GameSection extends Fragment
 		setImages( getCurrLoc(), EMPTY );
 		int prevLoc = getCurrLoc();
 		boolean shouldDie = false;
+		int tempLoc = currLoc;
 		switch( d )
 		{
 			case UP:
@@ -116,10 +117,13 @@ public class GameSection extends Fragment
 				}
 				break;
 		}
-		currLoc = getAdjacentLocation( currLoc, d );
-		if( images[currLoc] == TAIL )
+		if( !shouldDie )
 		{
-			shouldDie = true;
+			tempLoc = getAdjacentLocation( currLoc, d );
+			if( images[tempLoc] == TAIL )
+			{
+				shouldDie = true;
+			}
 		}
 		if( shouldDie )
 		{
@@ -127,6 +131,7 @@ public class GameSection extends Fragment
 		}
 		else
 		{
+			currLoc = tempLoc;
 			if( images[currLoc] == CONSUMABLE )
 			{
 				eatConsumable();

@@ -11,7 +11,8 @@
         android:id="@+id/helpButton"
         android:layout_gravity="top|right"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/helpbutton"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="About Game"
+            android:text="@string/about"
             android:id="@+id/aboutButton"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
