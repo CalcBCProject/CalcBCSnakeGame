@@ -140,6 +140,9 @@ public class QuestionSection extends DialogFragment {
                     if (keyCode == KeyEvent.KEYCODE_BACK &&
                             event.getAction() == KeyEvent.ACTION_UP &&
                             !event.isCanceled()) {
+                        dialog.dismiss();
+                        dismiss();
+                        playActivity.resumeGame();
                         return true;
                     }
                     return false;
