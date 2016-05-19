@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.TextView;
 
 
 public class GameSection extends Fragment
@@ -32,17 +33,16 @@ public class GameSection extends Fragment
 	private Queue queue;
 	private boolean paused = false;
 	private int maxQueueSize;
-
+	private TextView score;
+	View view;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		//Log.d("create", "created" );
 
-		View v = inflater.inflate( R.layout.fragment_game_section, container, false );
+		view = inflater.inflate( R.layout.fragment_game_section, container, false );
 
-		grid = (GridView) v.findViewById( R.id.gameGrid );
-
-		initialize();
+		initialize( );
 
 		runnable = new Runnable()
 		{
@@ -57,7 +57,7 @@ public class GameSection extends Fragment
 		};
 		handler.postDelayed( runnable, delay );
 
-		return v;
+		return view;
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class GameSection extends Fragment
 			setImages( currLoc, HEAD );
 			setImages( prevLoc, TAIL );
 			queue.enqueue( prevLoc );
-			if( queue.size() > maxQueueSize )
+			while( queue.size() > maxQueueSize )
 			{
 				setImages( (int) queue.dequeue(), EMPTY );
 			}
@@ -152,9 +152,12 @@ public class GameSection extends Fragment
 	}
 
 	public void eatConsumable(){
-		maxQueueSize++;
 		if(playActivity.areQuestionsEnabled()) {
-			playActivity.pauseGame(PauseType.QUESTION);
+			playActivity.pauseGame( PauseType.QUESTION );
+		}
+		else
+		{
+			addTail( true );
 		}
 	}
 
@@ -193,16 +196,10 @@ public class GameSection extends Fragment
 
 	public boolean spawnConsumable()
 	{
-		boolean full = true;
-		for( int i = 0; i < GRID_WIDTH * GRID_HEIGHT; i++ )
-		{
-			if( images[i] == EMPTY )
-			{
-				full = false;
-			}
-		}
+		boolean full = maxQueueSize >= GRID_HEIGHT*GRID_HEIGHT-1;
 		if( full )
 		{
+			Log.d( "spawn", "false" );
 			return false;
 		}
 		boolean spotFound = false;
@@ -212,8 +209,9 @@ public class GameSection extends Fragment
 			if( images[r] == EMPTY )
 			{
 				spotFound = true;
+				Log.d( "location", ""+r );
 				images[r] = CONSUMABLE;
-				delay = (int)( Math.pow( Math.E, 6.0 - ( maxQueueSize / 2.0 ) ) + 250 );
+				delay = (int)( Math.pow( Math.E, 6.0 - ( maxQueueSize / 5.0 ) ) + 250 );
 			}
 		}
 		return true;
@@ -238,12 +236,21 @@ public class GameSection extends Fragment
 		currLoc = ( ( GRID_HEIGHT / 2 ) * GRID_WIDTH ) + ( GRID_WIDTH / 2 );
 		images[currLoc] = HEAD;
 		spawnConsumable();
+
+		grid = (GridView) view.findViewById( R.id.gameGrid );
 		grid.setAdapter( new TileAdapter( this.getContext(), images ) );
+
+		score = (TextView) view.findViewById( R.id.Score );
+		updateScore();
 	}
 
 	public int getCurrLoc()
 	{
 		return currLoc;
+	}
+	private void updateScore()
+	{
+		score.setText( "Score: " + maxQueueSize );
 	}
 	private int getAdjacentLocation( int startLoc, SnakeDirection d )
 	{
@@ -266,6 +273,22 @@ public class GameSection extends Fragment
 			case LEFT: return SnakeDirection.RIGHT;
 			default: return SnakeDirection.LEFT;
 		}
+	}
+	public void addTail( boolean add )
+	{
+		if( add )
+		{
+			maxQueueSize++;
+		}
+		else
+		{
+			maxQueueSize--;
+		}
+		if( maxQueueSize < 0 )
+		{
+			die();
+		}
+		updateScore();
 	}
 	public Context getGameContext()
 	{

@@ -117,6 +117,10 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         startActivity( i );
 		finish();
     }
+    public void modifyTail( boolean add )
+    {
+	    gameFrag.addTail( add );
+    }
 
     public boolean isPaused(){
         return isPaused;

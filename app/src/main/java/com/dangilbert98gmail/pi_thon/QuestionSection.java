@@ -150,11 +150,16 @@ public class QuestionSection extends DialogFragment {
             });
             TextView t = new TextView(getContext());
 
+	        boolean corr;
             if (correctRadioButton == myView.findViewById(choiceGroup.getCheckedRadioButtonId())) {
                 t.setText("Correct!");
+	            corr = true;
+
             } else {
                 t.setText("Incorrect!");
+	            corr = false;
             }
+	        playActivity.modifyTail( corr );
 
             t.setTypeface(Typeface.DEFAULT_BOLD);
             t.setTextSize(25);
@@ -192,5 +197,6 @@ public class QuestionSection extends DialogFragment {
         public void resumeGame();
         public Question selectQuestion();
         public void buildSolutionSection();
+	    public void modifyTail(boolean add);
     }
 }

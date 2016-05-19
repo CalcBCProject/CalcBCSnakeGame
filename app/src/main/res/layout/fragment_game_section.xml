@@ -12,6 +12,7 @@
         android:textSize="25dp"
         android:text="Score: "
         android:layout_marginLeft="40dp"
+        android:paddingBottom="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp"/>
 
