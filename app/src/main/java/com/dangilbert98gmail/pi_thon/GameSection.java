@@ -50,7 +50,7 @@ public class GameSection extends Fragment
 			public void run()
 			{
 				move( direction );
-				if(!paused) {
+				if(!playActivity.isPaused()) {
 					handler.postDelayed(this, delay);
 				}
 			}
@@ -154,8 +154,7 @@ public class GameSection extends Fragment
 	public void eatConsumable(){
 		maxQueueSize++;
 		if(playActivity.areQuestionsEnabled()) {
-			pause();
-			playActivity.displayQuestionScreen();
+			playActivity.pauseGame(PauseType.QUESTION);
 		}
 	}
 
@@ -178,13 +177,11 @@ public class GameSection extends Fragment
 
 	public void pause()
 	{
-		paused = true;
 		handler.removeCallbacks( runnable );
 	}
 
 	public void resume()
 	{
-		paused = false;
 		handler.postDelayed( runnable, delay );
 	}
 
@@ -276,7 +273,9 @@ public class GameSection extends Fragment
 	}
 	interface GameSectionListener {
 		public void displayQuestionScreen();
+		public boolean isPaused();
 		public boolean areQuestionsEnabled();
+		public void pauseGame(PauseType p);
 	}
 
 }

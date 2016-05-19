@@ -18,6 +18,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     private static QuestionSection questionFrag;
     private static SolutionSection solutionFrag;
     private static Question q;
+    private boolean isPaused;
     private WindowManager wm;
     protected static boolean questionsEnabled;
 
@@ -58,8 +59,12 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         controlFrag.disableButtons();
         gameFrag.pause();
 
+        isPaused = true;
+
         if (p == PauseType.PAUSE) {
             displayPauseScreen();
+        } if ( p == PauseType.QUESTION ){
+            displayQuestionScreen();
         }
     }
 
@@ -89,6 +94,8 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public void resumeGame() {
         controlFrag.enableButtons();
         gameFrag.resume();
+
+        isPaused = false;
     }
 
     public void buildSolutionSection(){
@@ -109,5 +116,9 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         Intent i = new Intent( this, MenuScreen.class );
         startActivity( i );
 		finish();
+    }
+
+    public boolean isPaused(){
+        return isPaused;
     }
 }
