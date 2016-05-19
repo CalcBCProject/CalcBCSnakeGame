@@ -19,7 +19,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     private static SolutionSection solutionFrag;
     private static Question q;
     private WindowManager wm;
-    protected static boolean questionsEnabled = true;
+    protected static boolean questionsEnabled;
 
 
     @Override
@@ -34,6 +34,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
         controlFrag = (ControlSection) (getSupportFragmentManager().findFragmentById(R.id.ControlSection));
         gameFrag = (GameSection) (getSupportFragmentManager().findFragmentById(R.id.GameSection));
         wm = (WindowManager) (getSystemService(Context.WINDOW_SERVICE));
+        questionsEnabled = true;
     }
 
     public void setSnakeDirection(SnakeDirection d) {
