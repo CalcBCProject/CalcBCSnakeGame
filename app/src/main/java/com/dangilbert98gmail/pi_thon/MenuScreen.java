@@ -54,18 +54,11 @@ public class MenuScreen extends AppCompatActivity
 			@Override
 			public void onClick(View v)
 			{
-				/*
-				handler = new Handler(  );
-				runnable = new Runnable()
-				{
-					@Override
-					public void run()
-					{
-						setRandomOrientation();
-						handler.postDelayed( runnable, 250 );
-					}
-				};
-				handler.postDelayed( runnable, 1000 ); */ }
+				Intent i = new Intent( MenuScreen.this, HelpScreen.class );
+
+				startActivity( i );
+				finish();
+			}
 		} );
 	}
 	public void setRandomOrientation()

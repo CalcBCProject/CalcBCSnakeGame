@@ -43,4 +43,5 @@
     </integer-array>
     <string name="title_activity_menu">Menu</string>
     <string name="about">About Game</string>
+    <string name="title_activity_help_screen">HelpScreen</string>
 </resources>

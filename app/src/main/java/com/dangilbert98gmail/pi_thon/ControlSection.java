@@ -154,11 +154,15 @@ public class ControlSection extends Fragment {
     public void onPause()
     {
         super.onPause();
-	    pauseButton.performClick();
+	    if( !playActivity.isPaused() )
+        {
+            playActivity.pauseGame( PauseType.PAUSE );
+        }
     }
 
     interface ControlSectionListener{
         public void setSnakeDirection(SnakeDirection direction);
         public void pauseGame(PauseType p);
+        public boolean isPaused();
     }
 }
