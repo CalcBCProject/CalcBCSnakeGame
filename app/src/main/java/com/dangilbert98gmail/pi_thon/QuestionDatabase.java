@@ -32,7 +32,7 @@ public final class QuestionDatabase {
     }
 
     private static void inhabitOriginal() {
-        if (questions.size() == 0) {
+        if (ORIGIONAL_QUESTIONS.size() == 0) {
             ORIGIONAL_QUESTIONS.add(new Question(R.drawable.question_0, R.drawable.question_0_ans_0, R.drawable.question_0_ans_1, R.drawable.question_0_ans_2, R.drawable.question_0_ans_3, R.drawable.question_0_ans_4, 1, R.drawable.consumable));
         }
     }
