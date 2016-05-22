@@ -13,8 +13,10 @@
 
         <ScrollView
             android:id="@+id/QuestionBox"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -23,12 +25,18 @@
             <ImageView
                 android:id="@+id/Question"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginTop="3dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:layout_weight=".6" />
         </ScrollView>
     </FrameLayout>

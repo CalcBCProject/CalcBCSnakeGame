@@ -17,7 +17,7 @@ import android.widget.ImageView;
  */
 public class SolutionSection extends DialogFragment {
     private Button returnButton;
-    private ImageView pic;
+    private ImageView solution, question;
     private SolutionSectionListener playActivity;
     private View myView;
 
@@ -29,7 +29,7 @@ public class SolutionSection extends DialogFragment {
         getDialog().setCanceledOnTouchOutside(false);
 
         setButtons();
-        setup(playActivity.getSolutionID());
+        setup(playActivity.getSolutionID(), playActivity.getQuestionID());
 
         getDialog().getWindow().setLayout(3000, 3000);
         return myView;
@@ -65,12 +65,14 @@ public class SolutionSection extends DialogFragment {
     }
 
     public void setButtons(){
-        pic = (ImageView) (myView.findViewById(R.id.Solution));
+        solution = (ImageView) (myView.findViewById(R.id.Solution));
+        question = (ImageView) (myView.findViewById(R.id.Question));
         returnButton = (Button)(myView.findViewById(R.id.ReturnButton));
     }
 
-    public void setup(int solutionID){
-        pic.setImageDrawable(getContext().getResources().getDrawable(solutionID));
+    public void setup(int solutionID, int questionID){
+        solution.setImageDrawable(getContext().getResources().getDrawable(solutionID));
+        question.setImageDrawable(getContext().getResources().getDrawable(questionID));
         returnButton.setOnClickListener(new ButtonListener());
     }
 
@@ -84,6 +86,7 @@ public class SolutionSection extends DialogFragment {
 
     interface SolutionSectionListener{
         public int getSolutionID();
+        public int getQuestionID();
         public void resumeGame();
     }
 }

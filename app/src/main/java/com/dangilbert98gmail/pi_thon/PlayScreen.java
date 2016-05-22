@@ -85,11 +85,11 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     }
 
     public Question selectQuestion() {
-        q = QuestionDatabase.getRandomQuestionExample();
+        q = QuestionDatabase.getRandomQuestion();
         if (q != null) {
             return q;
         } else {
-            QuestionDatabase.resetDatabaseExample();
+            QuestionDatabase.resetDatabase();
             return selectQuestion();
         }
     }
@@ -114,6 +114,8 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public int getSolutionID(){
         return q.getSolutionId();
     }
+
+    public int getQuestionID(){ return q.getQuestionImageId(); }
 
     public void goToMainMenu() {
         Intent i = new Intent( this, MenuScreen.class );
