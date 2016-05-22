@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * Created by Samsung on 5/19/2016.
@@ -13,7 +14,7 @@ import android.widget.Button;
 public class AboutSection extends DialogFragment
 {
 	private View myView;
-	private Button close;
+	private ImageButton close;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +24,7 @@ public class AboutSection extends DialogFragment
 		getDialog().setCanceledOnTouchOutside( false );
 		getDialog().getWindow().setLayout( 3000, 3000 );
 
-		close = (Button) myView.findViewById( R.id.ResumeButtonAbout);
+		close = (ImageButton) myView.findViewById( R.id.ResumeButtonAbout);
 		close.setOnClickListener( new View.OnClickListener()
 		{
 			@Override
