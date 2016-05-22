@@ -11,12 +11,13 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener, SolutionSection.SolutionSectionListener{
+public class PlayScreen extends AppCompatActivity implements ControlSection.ControlSectionListener, PauseSection.PauseSectionListener, GameSection.GameSectionListener, QuestionSection.QuestionSectionListener, SolutionSection.SolutionSectionListener, EndGameSection.EndGameSectionListener{
     private static ControlSection controlFrag;
     private static GameSection gameFrag;
     private static PauseSection pauseFrag;
     private static QuestionSection questionFrag;
     private static SolutionSection solutionFrag;
+    private static EndGameSection endGameFrag;
     private static Question q;
     private boolean isPaused;
     private WindowManager wm;
@@ -65,6 +66,8 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
             displayPauseScreen();
         } if ( p == PauseType.QUESTION ){
             displayQuestionScreen();
+        } if ( p == PauseType.DEATH){
+            displayDeathScreen();
         }
     }
 
@@ -124,5 +127,15 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
 
     public boolean isPaused(){
         return isPaused;
+    }
+
+    public void displayDeathScreen(){
+        FragmentManager fm = getSupportFragmentManager();
+        endGameFrag = new EndGameSection();
+        endGameFrag.show(fm, "dialog_fragment_solution");
+    }
+
+    public int getScore(){
+        return gameFrag.getScore();
     }
 }
