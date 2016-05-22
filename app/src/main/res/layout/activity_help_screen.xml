@@ -8,4 +8,39 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="com.dangilbert98gmail.pi_thon.HelpScreen">
 
+    <Button
+        android:background="@drawable/pausebuttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:id="@+id/helpClose"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="60dp"
+            android:text="PI-thon"
+            android:id="@+id/title"
+            android:paddingBottom="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="In PI-thon, your objective is to collect consumables to increase the size of your tail. If you have calculus enabled, then getting a question right will increase the size of your tail based on its difficulty, and getting a question wrong will decrease your tail size by one. If you run into a wall or one of your tails you lose."
+            android:id="@+id/intro"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
 </RelativeLayout>

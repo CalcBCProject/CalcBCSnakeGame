@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by Samsung on 5/19/2016.
@@ -12,14 +13,25 @@ import android.view.ViewGroup;
 public class AboutSection extends DialogFragment
 {
 	private View myView;
+	private Button close;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		myView = inflater.inflate(R.layout.dialog_fragment_about, container, false);
 		getDialog().setCanceledOnTouchOutside( false );
+		getDialog().getWindow().setLayout( 3000, 3000 );
 
-		getDialog().getWindow().setLayout(3000, 3000);
+		close = (Button) myView.findViewById( R.id.ResumeButtonAbout);
+		close.setOnClickListener( new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				dismiss();
+			}
+		} );
 		return myView;
 	}
 }

@@ -3,10 +3,9 @@ package com.dangilbert98gmail.pi_thon;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,6 +17,7 @@ public class MenuScreen extends AppCompatActivity
 	private ImageButton help;
 	private Handler handler;
 	private Runnable runnable;
+	private static AboutSection aboutFrag;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +44,9 @@ public class MenuScreen extends AppCompatActivity
 			@Override
 			public void onClick(View v)
 			{
-				//about stuff
+				FragmentManager fm = getSupportFragmentManager();
+				aboutFrag = new AboutSection();
+				//aboutFrag.show( fm, "dialog_fragment_pause" );
 			}
 		} );
 

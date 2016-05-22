@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/AboutSection"
+             android:layout_gravity="center">
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/ResumeButtonAbout"
+        android:layout_gravity="right|top"
+        android:src="@drawable/x_button_1"
+        android:scaleType="fitXY"
+        android:background="@drawable/pausebuttonsv2"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/aboutText"
+        android:id="@+id/aboutText"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"/>
+</FrameLayout>
