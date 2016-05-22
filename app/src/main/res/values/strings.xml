@@ -42,7 +42,7 @@
         <item>@color/darkgrey</item>
     </integer-array>
     <string name="title_activity_menu">Menu</string>
-    <string name="about">About Game</string>
+    <string name="about">About</string>
     <string name="title_activity_help_screen">HelpScreen</string>
     <string name="close_help">Close</string>
     <string name="aboutText">We made this app as a part of an end of the year calculus assignment. This is our take on an academic version of the classic game Snake. We hope you enjoy!</string>

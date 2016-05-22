@@ -17,13 +17,17 @@
         android:scaleType="fitXY"
         android:background="@drawable/pausebuttonsv2"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/aboutText"
         android:id="@+id/aboutText"
+        android:padding="10dp"
+        android:background="@drawable/question_background"
         android:layout_gravity="center"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textColor="@color/black"/>
 </FrameLayout>

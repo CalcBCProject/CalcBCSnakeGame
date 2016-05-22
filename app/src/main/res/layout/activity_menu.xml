@@ -29,14 +29,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/chrmndr"
             android:paddingBottom="0dp"
-            android:layout_margin="25dp"
+            android:layout_margin="40dp"
             android:layout_gravity="center"
             android:elegantTextHeight="false"
             />
 
         <Button
             android:background="@drawable/pausebuttons"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="40dp"
             android:width="150dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,6 @@
 
     <Button
         android:background="@drawable/pausebuttons"
-        android:width="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -56,6 +55,7 @@
         android:id="@+id/aboutButton"
         android:layout_gravity="center_horizontal|bottom"
         android:gravity="center"
+        android:width="75dp"
         android:layout_marginBottom="20dp"/>
 
 
