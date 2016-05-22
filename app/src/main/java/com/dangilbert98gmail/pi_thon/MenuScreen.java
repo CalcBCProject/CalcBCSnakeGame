@@ -1,14 +1,17 @@
 package com.dangilbert98gmail.pi_thon;
 
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import static android.view.View.*;
 
 public class MenuScreen extends AppCompatActivity
 {
@@ -26,7 +29,7 @@ public class MenuScreen extends AppCompatActivity
 		setContentView( R.layout.activity_menu );
 
 		startGame = (Button) findViewById( R.id.startButton );
-		startGame.setOnClickListener( new View.OnClickListener()
+		startGame.setOnClickListener( new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -39,19 +42,19 @@ public class MenuScreen extends AppCompatActivity
 		} );
 
 		about = (Button) findViewById( R.id.aboutButton );
-		about.setOnClickListener( new View.OnClickListener()
+		about.setOnClickListener( new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
 				FragmentManager fm = getSupportFragmentManager();
 				aboutFrag = new AboutSection();
-				//aboutFrag.show( fm, "dialog_fragment_pause" );
+				aboutFrag.show(fm, "dialog_fragment_pause");
 			}
 		} );
 
 		help = (ImageButton) findViewById( R.id.helpButton );
-		help.setOnClickListener( new View.OnClickListener()
+		help.setOnClickListener( new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
