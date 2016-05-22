@@ -49,7 +49,7 @@ public class MenuScreen extends AppCompatActivity
 			{
 				FragmentManager fm = getSupportFragmentManager();
 				aboutFrag = new AboutSection();
-				aboutFrag.show(fm, "dialog_fragment_pause");
+				aboutFrag.show(fm, "dialog_fragment_about");
 			}
 		} );
 
