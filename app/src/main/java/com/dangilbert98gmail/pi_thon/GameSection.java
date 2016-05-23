@@ -116,9 +116,10 @@ public class GameSection extends Fragment {
             die();
         } else {
             currLoc = tempLoc;
+            boolean spawn = false;
             if (images[currLoc] == CONSUMABLE) {
                 eatConsumable();
-                spawnConsumable();
+                spawn = true;
             }
             setImages(currLoc, HEAD);
             setImages(prevLoc, TAIL);
@@ -126,7 +127,11 @@ public class GameSection extends Fragment {
             while (queue.size() > maxQueueSize) {
                 setImages((int) queue.dequeue(), EMPTY);
             }
-            grid.setAdapter( new TileAdapter( getGameContext(), images ) );
+            if( spawn )
+            {
+                spawnConsumable();
+            }
+            grid.setAdapter(new TileAdapter(getGameContext(), images));
         }
     }
 

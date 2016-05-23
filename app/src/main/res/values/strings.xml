@@ -45,5 +45,5 @@
     <string name="about">About</string>
     <string name="title_activity_help_screen">HelpScreen</string>
     <string name="close_help">Close</string>
-    <string name="aboutText">We made this app as a part of an end of the year calculus assignment. This is our take on an academic version of the classic game Snake. We hope you enjoy! /n/t -Dan and Teddy </string>
+    <string name="aboutText">We made this app as a part of an end of the year calculus assignment. This is our take on an academic version of the classic game Snake. We hope you enjoy!\n-Dan and Teddy </string>
 </resources>

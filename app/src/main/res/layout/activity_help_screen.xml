@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:text="In PI-thon, your objective is to collect consumables to increase the size of your tail. If you have calculus enabled, then getting a question right will increase the size of your tail by 1, and getting a question wrong will decrease your tail size by one. If you run into a wall or one of your tails you lose."
+            android:text="In PI-thon, your objective is to collect consumables to increase the size of your tail. If you have calculus enabled, then getting a question right will increase the size of your tail by one, while getting a question wrong will decrease your tail size by one. If you run into a wall or one of your tails, the game ends."
             android:id="@+id/intro"
             android:layout_below="@+id/title"
             android:layout_centerHorizontal="true"/>
