@@ -140,4 +140,10 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public int getScore(){
         return gameFrag.getScore();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        pauseGame( PauseType.PAUSE );
+    }
 }
