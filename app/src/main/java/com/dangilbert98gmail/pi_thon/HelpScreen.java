@@ -1,5 +1,6 @@
 package com.dangilbert98gmail.pi_thon;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,5 +34,9 @@ public class HelpScreen extends AppCompatActivity
 		} );
 	}
 
-
+	@Override
+	public void onBackPressed()
+	{
+		close.performClick();
+	}
 }
