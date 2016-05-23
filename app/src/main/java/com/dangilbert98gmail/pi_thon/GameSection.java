@@ -32,6 +32,7 @@ public class GameSection extends Fragment {
     private boolean paused = false;
     private int maxQueueSize;
     private TextView score;
+	private SnakeDirection prevDirection;
     View view;
 
     @Override
@@ -71,7 +72,7 @@ public class GameSection extends Fragment {
             return false;
         }
         if (maxQueueSize > 0) {
-            if (direction == getOppositeDirection(d)) {
+            if (prevDirection == getOppositeDirection(d)) {
                 return false;
             }
         }
@@ -131,6 +132,7 @@ public class GameSection extends Fragment {
             {
                 spawnConsumable();
             }
+	        prevDirection = direction;
             grid.setAdapter(new TileAdapter(getGameContext(), images));
         }
     }
@@ -222,6 +224,7 @@ public class GameSection extends Fragment {
         shouldDie = false;
 
         direction = SnakeDirection.UP;
+	    prevDirection = getOppositeDirection( direction );
 
         images = new int[GRID_WIDTH * GRID_HEIGHT];
         for (int r = 0; r < GRID_HEIGHT; r++) {
