@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class GameSection extends Fragment {
     private PlayScreen playActivity;
     private final int GRID_WIDTH = 9;
     private final int GRID_HEIGHT = 11;
-    private final int TAIL = R.drawable.red_tile;
+    private final int TAIL = R.drawable.tail;
     private final int HEAD = R.drawable.head;
     private final int EMPTY = R.drawable.background;
     private final int CONSUMABLE = R.drawable.consumable;

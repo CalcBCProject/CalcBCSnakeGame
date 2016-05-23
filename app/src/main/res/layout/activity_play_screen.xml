@@ -8,7 +8,7 @@
                 android:paddingBottom="10dp"
                 tools:context=".PlayScreen"
                 android:orientation="vertical"
-                android:background="#944a4a"
+                android:background="#616161"
     android:id="@+id/PlayScreen">
 
     <fragment

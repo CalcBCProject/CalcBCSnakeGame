@@ -4,9 +4,8 @@
                 android:layout_height="match_parent"
                 android:id="@+id/MainMenu"
                 android:layout_gravity="center"
-
-                 android:background="#6A7E25">
-                tools:context="com.dangilbert98gmail.pi_thon.Menu">
+                tools:context="com.dangilbert98gmail.pi_thon.Menu"
+             android:background="#4CAF50">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

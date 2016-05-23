@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dangilbert98gmail.pi_thon.ControlSection"
-    android:background="#e17171"
+    android:background="#4CAF50"
     android:id="@+id/ControlSection">
 
     <!-- TODO: Update blank fragment layout -->
