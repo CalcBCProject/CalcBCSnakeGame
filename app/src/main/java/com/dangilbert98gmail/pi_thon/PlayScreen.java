@@ -104,7 +104,7 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     public void buildSolutionSection(){
         FragmentManager fm = getSupportFragmentManager();
         solutionFrag = new SolutionSection();
-        solutionFrag.show(fm, "dialog_fragment_solution");
+        solutionFrag.show( fm, "dialog_fragment_solution" );
     }
 
     public void restartGame() {
@@ -144,6 +144,10 @@ public class PlayScreen extends AppCompatActivity implements ControlSection.Cont
     @Override
     public void onBackPressed()
     {
-        pauseGame( PauseType.PAUSE );
+        super.onPause();
+        if( !isPaused() )
+        {
+            pauseGame( PauseType.PAUSE );
+        }
     }
 }

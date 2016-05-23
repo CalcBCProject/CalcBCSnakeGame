@@ -51,7 +51,7 @@ public class GameSection extends Fragment {
                 }
             }
         };
-        handler.postDelayed(runnable, delay);
+        handler.postDelayed( runnable, delay );
 
         return view;
     }
@@ -126,7 +126,7 @@ public class GameSection extends Fragment {
             while (queue.size() > maxQueueSize) {
                 setImages((int) queue.dequeue(), EMPTY);
             }
-            grid.setAdapter(new TileAdapter(getGameContext(), images));
+            grid.setAdapter( new TileAdapter( getGameContext(), images ) );
         }
     }
 
@@ -153,11 +153,11 @@ public class GameSection extends Fragment {
     }
 
     public void pause() {
-        handler.removeCallbacks(runnable);
+        handler.removeCallbacks( runnable );
     }
 
     public void resume() {
-        handler.postDelayed(runnable, delay);
+        handler.postDelayed( runnable, delay );
     }
 
     public void restart() {
@@ -165,23 +165,49 @@ public class GameSection extends Fragment {
         pause();
     }
 
-    public boolean spawnConsumable() {
-        boolean full = maxQueueSize >= GRID_HEIGHT * GRID_HEIGHT - 1;
-        if (full) {
-            Log.d("spawn", "false");
-            return false;
-        }
-        boolean spotFound = false;
-        while (!spotFound) {
-            int r = (int) (Math.random() * (GRID_WIDTH * GRID_HEIGHT));
-            if (images[r] == EMPTY) {
-                spotFound = true;
-                Log.d("location", "" + r);
-                images[r] = CONSUMABLE;
-                delay = (int) (Math.pow(Math.E, 6.0 - (maxQueueSize / 5.0)) + 250);
-            }
-        }
-        return true;
+    public boolean spawnConsumable()
+    {
+	    if( playActivity.areQuestionsEnabled() )
+	    {
+		    boolean full = maxQueueSize >= (GRID_HEIGHT - 2 ) * (GRID_HEIGHT - 2 ) - 1;
+		    if (full) {
+			    Log.d("spawn", "false");
+			    return false;
+		    }
+		    boolean spotFound = false;
+		    while (!spotFound) {
+			    int r = (int) (Math.random() * (GRID_WIDTH * GRID_HEIGHT));
+			    if (images[r] == EMPTY && r >= GRID_WIDTH && r < (GRID_WIDTH * GRID_HEIGHT) - GRID_WIDTH && r%GRID_WIDTH != 0 && (r+1)%GRID_WIDTH != 0 ) {
+				    spotFound = true;
+				    Log.d("location", "" + r);
+				    images[r] = CONSUMABLE;
+				    delay = (int) (Math.pow(Math.E, 6.0 - (maxQueueSize / 5.0)) + 250);
+			    }
+		    }
+		    return true;
+	    }
+	    else
+	    {
+		    boolean full = maxQueueSize >= GRID_HEIGHT * GRID_HEIGHT - 1;
+		    if( full )
+		    {
+			    Log.d( "spawn", "false" );
+			    return false;
+		    }
+		    boolean spotFound = false;
+		    while( ! spotFound )
+		    {
+			    int r = (int) ( Math.random() * ( GRID_WIDTH * GRID_HEIGHT ) );
+			    if( images[r] == EMPTY )
+			    {
+				    spotFound = true;
+				    Log.d( "location", "" + r );
+				    images[r] = CONSUMABLE;
+				    delay = (int) ( Math.pow( Math.E, 6.0 - ( maxQueueSize / 5.0 ) ) + 250 );
+			    }
+		    }
+		    return true;
+	    }
     }
 
     public void initialize() {
